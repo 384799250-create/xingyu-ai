@@ -1,0 +1,25 @@
+# /etc/systemd/system/xingyu-ww0000000000000003-bridge.service
+[Unit]
+Description=Xiaoyi narrow local identity bridge
+
+After=docker.service xiaoyi-portal-bridge.service
+Requires=docker.service xiaoyi-portal-bridge.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/enterprises/ww0000000000000003/portal/code/bridge.py --socket /run/xiaoyi-portal/bridge-ww0000000000000003.sock --root /home/ubuntu/wecom-kf/enterprises/ww0000000000000003
+ReadWritePaths=/home/ubuntu/wecom-kf/enterprises/ww0000000000000003 /run/xiaoyi-portal
+Type=simple
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=CAP_CHOWN CAP_DAC_OVERRIDE CAP_FOWNER
+MemoryMax=96M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

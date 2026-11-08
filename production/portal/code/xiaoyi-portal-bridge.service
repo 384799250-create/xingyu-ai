@@ -1,0 +1,24 @@
+[Unit]
+Description=Xiaoyi narrow local identity bridge
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/portal/code/bridge.py
+Restart=on-failure
+RestartSec=3
+RuntimeDirectory=xiaoyi-portal
+RuntimeDirectoryMode=0750
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/run/xiaoyi-portal /home/ubuntu/wecom-kf/apps
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=CAP_CHOWN CAP_DAC_OVERRIDE CAP_FOWNER
+MemoryMax=96M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

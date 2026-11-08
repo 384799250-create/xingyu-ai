@@ -1,0 +1,11 @@
+.git
+.env
+.env.*
+!.env.example
+**/data
+**/private
+**/*.sqlite*
+**/*.key
+**/*.pem
+**/__pycache__
+miniprogram

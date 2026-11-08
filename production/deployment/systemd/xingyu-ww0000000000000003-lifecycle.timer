@@ -1,0 +1,8 @@
+[Unit]
+Description=Star island isolated lifecycle
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=1min
+Unit=xingyu-ww0000000000000003-lifecycle.service
+[Install]
+WantedBy=timers.target

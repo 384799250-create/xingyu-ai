@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#166356">
+  <meta name="description" content="星屿，在微信里与你对话的专属 AI 伙伴。自定义人格，导入人物卡，编写世界书，把 ta 变成你心中的那个 ta。">
+  <link rel="icon" href="data:,">
+  <title>星屿 · 我的 AI</title>
+  <link rel="stylesheet" href="/ai/style.css">
+  <link rel="stylesheet" href="/ai/landing.css">
+  <script src="/ai/app.js?v=email-20261028" defer></script>
+</head>
+<body class="portal-home">
+<!-- THESIS: Introduce a personal WeChat AI before asking visitors to create an account.
+OWN-WORLD: Preserve forest green, pale green ground, Chinese system typography and familiar account controls.
+STORY: Discover personality settings; understand account, phone, scan and settings in WeChat; register or log in. Authenticated visitors go straight to their application.
+FIRST VIEWPORT: Quiet navigation, centered two-line headline, two account actions and a clearly labeled sample conversation. Spacious explanations lead to the existing form.
+FORM: Reference-led layout refinement, portal-reference-20261026; established visual world and business flows retained.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->
+<a class="skip-link" href="#main">跳到主要内容</a>
+<header class="top"><a class="brand" href="/ai/" aria-label="星屿首页"><svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M7 7h18v13H15l-6 5v-5H7V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 12h8m-8 4h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>星屿</a><nav id="visitor-nav" aria-label="首页导航"><a class="desktop-nav" href="#possibilities">相处方式</a><a class="desktop-nav" href="#getting-started">开始连接</a><a href="/ai/demo">查看演示</a><a href="/ai/help">使用说明</a><a class="nav-login" href="#account" data-auth-mode="login">登录</a><a class="nav-start" href="#account" data-auth-mode="register">开始使用</a></nav><div id="account-bar" hidden><a href="/ai/demo">查看演示</a><a href="/ai/help">使用说明</a><span id="account-name"></span><button id="logout" type="button" class="quiet">退出登录</button></div></header>
+<main id="main">
+  <section id="loading" class="loading" aria-live="polite">正在打开你的空间…</section>
+  <section id="auth-view" class="landing" hidden aria-labelledby="entry-title">
+    <div class="landing-hero">
+      <h1 id="entry-title"><span>把 ta 变成</span><span>你心中的那个 <em>ta</em></span></h1>
+      <p class="hero-description">在微信里，遇见独属于你的 AI 伙伴。<br>从一句称呼、一种性格开始，慢慢设定你们相处的方式。</p>
+      <div class="hero-actions"><a class="landing-primary" href="#account" data-auth-mode="register">创建我的 AI <span aria-hidden="true">→</span></a><a class="landing-secondary" href="#account" data-auth-mode="login">我已有账号</a></div>
+      <a class="hero-discover" href="#possibilities">先看看，我们可以怎样相处 <span aria-hidden="true">↓</span></a>
+      <figure class="conversation-sample" aria-label="文字对话示意，不是真实聊天记录">
+        <figcaption><span class="sample-avatar" aria-hidden="true">艺</span><span>星屿<small>对话示意</small></span><span class="sample-channel">在微信里聊</span></figcaption>
+        <div class="sample-messages"><p class="sample-user">今天不想听大道理，只想有人听我说。</p><div class="sample-reply"><span class="reply-avatar" aria-hidden="true">艺</span><div><p>好，那今天先不急着想办法。</p><p>你慢慢说，我在听。</p></div></div></div>
+        <p class="sample-note">一种相处方式的示意。实际回复由你的人格设定和对话决定。</p>
+      </figure>
+    </div>
+    <section class="possibilities" id="possibilities" aria-labelledby="possibilities-title">
+      <div class="section-heading"><h2 id="possibilities-title">让每一次回应，<br>多一点你喜欢的样子。</h2><p>从性格、称呼到说话的语气，<br>一点点写下你希望的模样。</p></div>
+      <div class="personality-feature">
+        <div class="feature-copy"><h3>性格、称呼和背景，<br>由你来定义。</h3><p>创建和切换你的人格，写下 ta 的性格与说话方式。也可以直接导入人物卡，再补充你们的故事。</p><a href="/ai/help#persona">了解人格与人物卡 <span aria-hidden="true">↗</span></a></div>
+        <figure class="profile-sample"><figcaption>人格设定示意</figcaption><dl><div><dt>当前人格</dt><dd>晚风人格</dd></div><div><dt>人格自称</dt><dd>晚风</dd></div><div><dt>称呼我</dt><dd>小林</dd></div><div><dt>相处方式</dt><dd>温柔，也坦率。先听我说，再一起想办法。</dd></div></dl><p>角色名称、ta 的自称、对你的称呼，可以各不相同。</p></figure>
+      </div>
+      <div class="feature-pair"><article><h3>把你们的世界，也写进设定。</h3><p>用世界书补充人物背景、彼此的关系和故事规则。喜欢轻松日常，还是有完整世界观的角色对话，都可以从自己的设定开始。</p><a href="/ai/help#persona">了解世界书的使用方式 <span aria-hidden="true">↗</span></a></article><article><h3>重要的小事，留在自己的空间。</h3><p>喜欢的称呼、希望记住的偏好，都可以在个人记忆中查看和管理。需要调整时，回到设置页修改，让后续相处更贴近你的习惯。</p><p>人格、记忆和聊天空间随自己的独立应用保存，其他成员的内容不会显示在你的设置里。</p></article></div>
+    </section>
+    <section class="landing-section" id="expressions" aria-labelledby="expressions-title">
+      <div class="section-heading"><h2 id="expressions-title">有时想打字，<br>有时想换一种表达。</h2><p>不用在几个入口之间来回切换，<br>从微信里的这一段对话继续。</p></div>
+      <dl class="expression-list">
+        <div><dt>把灵感，变成一张图。</dt><dd><p>描述你想要的画面，也可以补充人物、氛围、比例和清晰度。在聊天里提出图片请求，生成后继续聊你的想法。</p><blockquote>“来一张雨后森林的照片，横版，光线柔和一点。”</blockquote></dd></div>
+        <div><dt>不方便打字，就直接说。</dt><dd><p>发来微信语音，由语音识别转成文字参与对话。想听 ta 开口，也可以在个人设置里选择可用的语音回复方式和音色。</p><blockquote>“我刚刚说的那件事，你怎么看？”</blockquote></dd></div>
+        <div><dt>让表情，也参与聊天。</dt><dd><p>上传喜欢的表情包，整理内容和分类，再设置发送偏好。合适的时候，用一张表情补上文字之外的语气。</p><blockquote>开心、撒娇、安慰，或一个心照不宣的回应。</blockquote></dd></div>
+        <div><dt>一些小事，提前交代好。</dt><dd><p>明确说出提醒时间和内容，也可以在设置里安排问候、调整主动陪伴与免打扰，让日常交流有自己的节奏。</p><blockquote>“十分钟后提醒我把水杯带上。”</blockquote></dd></div>
+      </dl>
+      <p class="landing-note">以上为使用方式示例。图片、语音、表情识别及定时发送以当前应用的接口、权限和任务状态为准。<a href="/ai/help#features">查看各项功能的使用说明</a></p>
+    </section>
+    <section class="landing-section everyday-section" aria-labelledby="everyday-title">
+      <div class="section-heading"><h2 id="everyday-title">不用想好开场白，<br>先聊一句就好。</h2><p>认真聊，也可以随便聊。<br>相处方式由你慢慢调整。</p></div>
+      <div class="everyday-list">
+        <article><h3>想说说今天</h3><p>聊聊发生的小事，或者直接告诉 ta：这次想被倾听，还是希望一起找办法。</p><blockquote>“今天有点累，先听我说，不用急着给建议。”</blockquote></article>
+        <article><h3>想一起推敲灵感</h3><p>从一个模糊的念头开始，聊故事、想文案，或把脑海中的场景描述得更具体。</p><blockquote>“我想写一个海边小镇的故事，陪我想想开头。”</blockquote></article>
+        <article><h3>想继续你们的故事</h3><p>选择自己的人格，用人物卡和世界书补充背景，再把对话接到喜欢的情境里。</p><blockquote>“接着昨天的设定，今天我们回到了那家旧书店。”</blockquote></article>
+      </div>
+      <p class="landing-note">示例只是聊天的起点。需要延续的背景，可以补充到当前人格、世界书或个人记忆里。</p>
+    </section>
+    <section class="getting-started" id="getting-started" aria-labelledby="getting-started-title">
+      <div class="section-heading"><h2 id="getting-started-title">几步之后，<br>我们在微信里见。</h2><p>网页申请开通，微信里聊天和管理。<br>第一次连接，按这几个步骤来就好。</p></div>
+      <ol class="connection-steps"><li><span aria-hidden="true">1</span><h3>创建网页账号</h3><p>验证邮箱并设置至少 6 个字符的密码，邮箱即登录账号。注册成功后会进入独立的 AI 伙伴创建页。</p></li><li><span aria-hidden="true">2</span><h3>创建 AI 伙伴</h3><p>在新页面填写昵称、头像和微信手机号，提交后系统自动申请并设置你的独立 AI。</p></li><li><span aria-hidden="true">3</span><h3>用微信扫码</h3><p>用这个手机号对应的微信关注页面入口，再打开页面显示的 AI 应用。请核对应用名称。</p></li><li><span aria-hidden="true">4</span><h3>在微信管理</h3><p>向自己的 AI 发送 <strong>我要设置</strong>，直接打开微信返回的设置页，调整人格和相处方式。</p></li></ol>
+      <p class="existing-ai-note">已经有自己的 AI？在原来的微信对话中发送 <strong>我要设置</strong>，直接打开返回的设置页即可。<a href="/ai/help#start">查看连接说明</a></p>
+    </section>
+    <section class="landing-section landing-faq" aria-labelledby="landing-faq-title">
+      <div class="section-heading"><h2 id="landing-faq-title">开始之前，<br>你可能还想知道。</h2><p>先把这些问题说清楚，<br>再安心开始你们的对话。</p></div>
+      <details><summary>这是我自己的 AI，还是大家共用一个？</summary><p>开通后，你连接的是分配给自己的独立应用，有自己的设置、人格、记忆和聊天空间。其他成员的内容不会显示在你的个人设置中。</p></details>
+      <details><summary>为什么需要填写微信手机号并扫码？</summary><p>手机号用于申请对应企业成员和独立应用，扫码用于关注微信入口。请填写本人微信对应的手机号。开通后，聊天和个人设置都在微信里完成，无需另外绑定网页账号。</p></details>
+      <details><summary>我已经在微信里使用星屿，还要重新开通吗？</summary><p>直接登录原网页账号即可继续使用。已有 AI 的迁移或账号找回，请联系管理员核对，避免重复申请新的应用。</p></details>
+      <details><summary>设置链接每次都要重新获取吗？</summary><p>链接自生成起固定 15 分钟内可重复打开，过期后在微信重新发送 <strong>我要设置</strong> 获取。需要调整设置时，直接打开微信返回的链接，无需粘贴到网站。链接只供本人使用，请勿转发。</p></details>
+      <details><summary>忘记网页密码怎么办？</summary><p>先在“账号与安全”完成邮箱验证，日后可在“忘记密码”中通过邮箱验证码重置。已绑定 AI 的账号也能使用自己的新设置链接找回。</p></details>
+      <details><summary>暂时没有空闲应用怎么办？</summary><p>按网页提示登记等待分配；已有申请可查看进度，无需反复注册。扫码、设置等问题可继续查看<a href="/ai/help#problems">使用说明与常见问题</a>。</p></details>
+    </section>
+    <section class="account-section" aria-labelledby="account-title">
+      <div class="account-copy"><h2 id="account-title">准备好了，<br>和 ta 打个招呼。</h2><p>你的设定，你的相处方式。<br>从这里，开始连接你自己的 AI。</p><a href="/ai/help">第一次使用？看看这份使用说明 <span aria-hidden="true">↗</span></a></div>
+      <div class="form-surface" id="account">
+      <div class="tabs" role="tablist" aria-label="账号操作"><button id="login-tab" role="tab" aria-controls="auth-panel" aria-selected="true" tabindex="0" type="button">登录</button><button id="register-tab" role="tab" aria-controls="auth-panel" aria-selected="false" tabindex="-1" type="button">注册账号</button></div>
+      <div id="auth-panel" role="tabpanel" aria-labelledby="login-tab">
+        <h2 id="form-title" tabindex="-1">回到你的 AI 空间</h2><p id="form-help" class="muted">使用邮箱登录；已有账号可继续使用原账号。</p>
+        <form id="auth-form">
+          <label for="username" id="username-label">邮箱或原账号</label><input id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="注册邮箱或原账号" required aria-describedby="username-help"><small id="username-help">原字母、数字账号仍可登录，不区分大小写。</small>
+          <label for="password" id="password-label">密码</label><div class="password-field"><input id="password" name="password" type="password" autocomplete="current-password" minlength="6" maxlength="128" required><button type="button" id="show-password" class="quiet" aria-label="显示密码" aria-pressed="false">显示</button></div><small>6–128 个字符。请妥善保存密码。</small>
+          <div id="registration-code-field" hidden><label for="registration-code">邮箱验证码</label><div class="code-row"><input id="registration-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="6 位验证码" disabled><button id="send-registration-code" class="secondary" type="button">发送验证码</button></div><small>验证码 10 分钟内有效，请勿转发给他人。</small><p id="registration-code-message" role="status" hidden></p></div>
+          <div id="recover-field" hidden><label for="recover-email">已验证邮箱</label><input id="recover-email" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com"><div class="code-row"><input id="recover-code" aria-label="找回密码邮箱验证码" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="6 位验证码"><button type="button" id="send-recover-code" class="secondary">发送验证码</button></div><small>验证码 10 分钟内有效。没有收到邮件时请检查垃圾邮件。</small><details id="legacy-recovery" class="legacy-recovery"><summary>使用微信设置链接找回</summary><label for="recover-link">自己的 AI 设置链接</label><textarea id="recover-link" rows="3" spellcheck="false" autocomplete="off" placeholder="https://www.example.com/ai/…/xiaoyi/#token=…"></textarea><small>仅绑定过 AI 的账号可以使用自己 AI 返回的链接。</small></details></div>
+          <p id="auth-error" class="error" role="alert" hidden></p>
+          <button id="auth-submit" class="primary wide" type="submit">登录</button>
+        </form>
+        <button type="button" id="recover-toggle" class="text-button">忘记密码？</button>
+        <p id="register-note" class="footnote" hidden>邮箱验证并注册成功后，填写 AI 伙伴昵称、头像和微信手机号即可继续。</p>
+      </div>
+      </div>
+    </section>
+  </section>
+  <section id="space-view" class="space" hidden aria-labelledby="space-title">
+    <div class="space-heading"><h1 id="space-title" tabindex="-1">我的 AI</h1><p class="muted">你的设定，你的相处方式。</p></div>
+    <div class="workspace">
+      <div id="state-content" class="state-content">
+        <h2 id="state-title"></h2><p id="state-label" class="state-label"></p><p id="state-description" class="description"></p>
+        <a id="profile-settings-link" class="secondary profile-settings-link" href="/ai/register">查看开通信息 <span aria-hidden="true">→</span></a>
+        <button id="wait" class="primary" type="button" hidden>登记等待分配</button>
+        <button id="refresh" class="secondary" type="button" hidden>重新检查状态</button>
+        <section id="onboarding-area" hidden aria-labelledby="phone-title">
+          <h3 id="phone-title">填写微信手机号</h3>
+          <p id="onboarding-help" class="muted"></p>
+          <form id="onboarding-form">
+            <label for="onboarding-phone">绑定微信的手机号</label>
+            <input id="onboarding-phone" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="11" pattern="1[3-9][0-9]{9}" required aria-describedby="onboarding-help">
+            <label class="consent-label"><input id="onboarding-consent" type="checkbox" required><span>这是我自己的微信手机号，我同意用它创建本企业成员并开通专属 AI。</span></label>
+            <p id="onboarding-error" class="error" role="alert" hidden></p>
+            <button id="onboarding-submit" class="primary wide" type="submit">开通我的 AI</button>
+          </form>
+        </section>
+        <section id="onboarding-progress" hidden aria-live="polite"><p id="onboarding-progress-text"></p></section>
+        <button id="retry-pool" class="primary" type="button" hidden>重新申请空闲名额</button>
+        <section id="onboarding-qr-area" hidden aria-labelledby="qr-title">
+          <h3 id="qr-title">用绑定手机号的微信扫码</h3>
+          <img id="onboarding-qr" width="252" height="252" alt="关注星屿企业微信插件的二维码" hidden>
+          <p id="qr-error" class="error" role="alert" hidden>二维码未能加载，请重新检查状态；如果仍无法显示，请联系管理员更新。</p>
+          <p>关注后，打开 <strong id="qr-app-name"></strong>，即可聊天。调整人格、记忆和回复方式时，发送 <strong>我要设置</strong>，直接打开微信返回的设置页。</p>
+          <small>这是本企业共用的微信关注入口。请使用填写手机号对应的微信；手机上可长按识别二维码。</small>
+        </section>
+        <p id="space-error" class="error" role="alert" hidden></p>
+        <div id="bound-details" hidden><h3>在微信里继续</h3><p>向自己的 AI 发送 <strong>我要设置</strong>，直接打开返回的设置页，调整人格、人物卡、世界书和对话偏好。</p><small>设置链接自生成起 15 分钟内有效，过期后重新获取。</small></div>
+      </div>
+      <aside id="personal-note" class="personal-note" hidden><h2>独属于你的空间</h2><p>每位用户使用自己的独立应用。人格、记忆和对话偏好在微信返回的专属设置页中管理。</p><p>应用在微信里的名字、头像，仍从你自己的个人设置入口调整。</p></aside>
+    </div>
+    <details class="account-settings"><summary>账号与安全</summary><p class="muted">修改密码后，其他设备上的网页登录会退出，微信聊天不受影响。验证邮箱后，可用邮箱验证码找回密码。</p><section class="email-security" aria-labelledby="email-security-title"><h3 id="email-security-title">找回密码邮箱</h3><p id="email-status" class="muted" role="status">尚未绑定邮箱。</p><form id="email-form"><label for="security-email">邮箱</label><input id="security-email" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com"><div class="code-row"><input id="security-code" aria-label="验证邮箱验证码" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="6 位验证码"><button type="button" id="send-email-code" class="secondary">发送验证码</button></div><p id="email-message" role="status" hidden></p><button id="verify-email" class="secondary" type="submit">验证邮箱</button></form></section><form id="password-form"><input id="security-username" type="text" autocomplete="username" hidden><label for="old-password">当前密码</label><input id="old-password" type="password" autocomplete="current-password" required maxlength="128"><label for="new-password">新密码</label><input id="new-password" type="password" autocomplete="new-password" minlength="6" maxlength="128" required><p id="password-message" role="status" hidden></p><button class="secondary" type="submit">修改密码</button></form></details>
+  </section>
+  <div id="fatal" class="fatal" hidden><h1>暂时无法打开空间</h1><p id="fatal-text"></p><button type="button" id="retry" class="primary">重新加载</button></div>
+</main>
+<footer><a href="/ai/">星屿</a><span>微信里相遇，在这里设定。</span><a href="/ai/help">使用说明与常见问题</a></footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#166356">
+  <title>星屿 · 演示模式</title>
+  <link rel="stylesheet" href="/ai/style.css">
+  <link rel="stylesheet" href="/ai/demo.css">
+  <script src="/ai/demo.js" defer></script>
+</head>
+<body class="demo-page">
+  <a class="skip-link" href="#demo-main">跳到主要内容</a>
+  <header class="top">
+    <a class="brand" href="/ai/" aria-label="星屿首页">星屿</a>
+    <nav><a href="/ai/help">使用说明</a><a href="/ai/">返回首页</a></nav>
+  </header>
+  <main id="demo-main">
+    <section class="demo-intro" aria-labelledby="demo-title">
+      <p class="demo-kicker">演示模式 · 不会产生真实操作</p>
+      <h1 id="demo-title">先体验一下，<br>你的 AI 会怎样被创建。</h1>
+      <p>下面的流程只在当前浏览器里模拟。不会注册账号、占用手机号、创建企业微信成员，也不会发送消息。</p>
+    </section>
+    <ol class="demo-steps" aria-label="演示步骤">
+      <li class="active" data-step="1"><span>1</span><strong>网页账号</strong></li>
+      <li data-step="2"><span>2</span><strong>伙伴资料</strong></li>
+      <li data-step="3"><span>3</span><strong>连接微信</strong></li>
+    </ol>
+    <section class="demo-card" aria-live="polite">
+      <div class="demo-panel" data-panel="1">
+        <p class="panel-label">第一步</p>
+        <h2>创建网页账号</h2>
+        <p class="panel-copy">真实流程会在这里创建网页账号。演示模式只保留输入体验。</p>
+        <label for="demo-username">账号</label>
+        <input id="demo-username" type="text" placeholder="例如：xiaoyi_demo" autocomplete="off">
+        <label for="demo-password">密码</label>
+        <input id="demo-password" type="password" placeholder="至少 6 个字符" autocomplete="off">
+        <label for="demo-email">邮箱</label>
+        <input id="demo-email" type="email" placeholder="可选，仅用于演示" autocomplete="off">
+        <button class="primary wide" type="button" data-next="2">模拟注册并继续 <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="demo-panel" data-panel="2" hidden>
+        <p class="panel-label">第二步</p>
+        <h2>设置你的 AI 伙伴</h2>
+        <p class="panel-copy">真实流程会保存头像和昵称，再申请独立应用。这里可以直接体验上传和裁剪前的资料填写。</p>
+        <div class="demo-avatar-row">
+          <div class="demo-avatar" id="demo-avatar-preview" aria-hidden="true">AI</div>
+          <div>
+            <label for="demo-avatar">伙伴头像 <span class="muted">可选</span></label>
+            <input id="demo-avatar" type="file" accept="image/jpeg,image/png">
+            <small>演示图片只保留在当前页面，不会上传。</small>
+          </div>
+        </div>
+        <label for="demo-name">伙伴昵称</label>
+        <input id="demo-name" type="text" placeholder="例如：星屿" autocomplete="off">
+        <div class="demo-actions"><button class="secondary" type="button" data-back="1">← 上一步</button><button class="primary" type="button" data-next="3">模拟提交资料 <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="demo-panel" data-panel="3" hidden>
+        <p class="panel-label">第三步</p>
+        <h2>连接微信</h2>
+        <p class="panel-copy">真实流程会显示企业微信二维码，再用微信发送设置链接确认。这里用不可扫描的演示二维码展示页面效果。</p>
+        <div class="demo-qr" role="img" aria-label="演示二维码，不可扫描"><span>演示<br>二维码</span></div>
+        <p class="demo-note">此二维码仅用于演示布局，不具备扫码功能。</p>
+        <div class="demo-actions"><button class="secondary" type="button" data-back="2">← 上一步</button><button class="primary" type="button" data-finish>模拟扫码并完成</button></div>
+      </div>
+      <div class="demo-panel demo-success" data-panel="4" hidden>
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <p class="panel-label">演示完成</p>
+        <h2>你的 AI 已准备好</h2>
+        <p class="panel-copy">真实流程完成后，会进入你的独立 AI 空间。现在可以重新演示一遍，或返回首页。</p>
+        <div class="demo-actions"><button class="secondary" type="button" data-reset>重新演示</button><a class="primary demo-link" href="/ai/">返回首页</a></div>
+      </div>
+    </section>
+    <p class="demo-footnote">演示模式不会保存任何资料。要开通真实 AI，请返回首页注册并填写本人微信手机号。</p>
+  </main>
+  <footer><a href="/ai/">星屿</a><span>微信里相遇，在这里设定。</span><a href="/ai/help">使用说明与常见问题</a></footer>
+</body>
+</html>

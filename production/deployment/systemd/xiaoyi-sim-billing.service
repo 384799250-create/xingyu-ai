@@ -1,0 +1,22 @@
+[Unit]
+Description=Xiaoyi automatic simulated billing (no real funds)
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/ubuntu/wecom-kf/admin/code
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/admin/code/auto_billing.py
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/ubuntu/wecom-kf/admin/data /home/ubuntu/wecom-kf/apps /var/lib/docker/volumes/wecom-kf_kf-data/_data
+RestrictAddressFamilies=AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

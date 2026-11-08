@@ -1,0 +1,24 @@
+[Unit]
+Description=Xiaoyi verified member onboarding and private application allocation
+After=network-online.target docker.service xiaoyi-portal-bridge.service
+Requires=docker.service xiaoyi-portal-bridge.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/onboarding/provisioning.py
+Restart=on-failure
+RestartSec=3
+UMask=0077
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/run/xiaoyi-portal /home/ubuntu/wecom-kf/apps /home/ubuntu/wecom-kf/onboarding /home/ubuntu/wecom-kf/app-pool
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=CAP_CHOWN CAP_DAC_OVERRIDE CAP_FOWNER
+MemoryMax=128M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

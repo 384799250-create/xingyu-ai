@@ -1,0 +1,19 @@
+# New local environment only; not a production replacement.
+services:
+  assistant:
+    build: .
+    env_file: .env
+    command: ["python", "companion_app.py"]
+    ports: ["127.0.0.1:8088:8088"]
+    volumes: ["assistant-data:/data"]
+    restart: "no"
+  portal:
+    build: .
+    env_file: .env
+    command: ["python", "portal/code/server.py"]
+    ports: ["127.0.0.1:8091:8091"]
+    volumes: ["portal-data:/data", "./local-bridge:/bridge"]
+    restart: "no"
+volumes:
+  assistant-data:
+  portal-data:

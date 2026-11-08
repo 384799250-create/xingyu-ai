@@ -1,0 +1,23 @@
+[Unit]
+Description=Xiaoyi automatic simulated billing (no real funds)
+
+After=docker.service xiaoyi-portal-bridge.service
+Requires=docker.service xiaoyi-portal-bridge.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/enterprises/ww0000000000000002/admin/code/auto_billing.py
+ReadWritePaths=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002 /run/xiaoyi-portal
+Type=simple
+User=root
+WorkingDirectory=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002/admin/code
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+RestrictAddressFamilies=AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

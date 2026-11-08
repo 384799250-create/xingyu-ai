@@ -1,0 +1,34 @@
+# /etc/systemd/system/xingyu-ww0000000000000003-billing.service
+[Unit]
+Description=Xiaoyi automatic simulated billing (no real funds)
+
+After=docker.service xiaoyi-portal-bridge.service
+Requires=docker.service xiaoyi-portal-bridge.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/enterprises/ww0000000000000003/admin/code/auto_billing.py
+ReadWritePaths=/home/ubuntu/wecom-kf/enterprises/ww0000000000000003 /run/xiaoyi-portal
+Type=simple
+User=root
+WorkingDirectory=/home/ubuntu/wecom-kf/enterprises/ww0000000000000003/admin/code
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+RestrictAddressFamilies=AF_UNIX
+
+[Install]
+WantedBy=multi-user.target
+
+# /etc/systemd/system/xingyu-ww0000000000000003-billing.service.d/central-closure-fence.conf
+[Service]
+# Central closure checks use mode=ro; WAL readers still need SQLite sidecar access.
+ReadWritePaths=/home/ubuntu/wecom-kf/admin/data
+
+# /etc/systemd/system/xingyu-ww0000000000000003-billing.service.d/starcoin.conf
+[Service]
+ExecStart=
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/enterprises/ww0000000000000003/admin/code/star_billing.py

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#166356"><link rel="icon" href="data:,"><title>星屿 · 总管理后台</title><link rel="stylesheet" href="/ai/admin/console.css?v=admin-bill-records-20261105.1"><script src="/ai/admin/console.js?v=admin-bill-records-20261105.1" defer></script></head>
+<body>
+<a class="skip-link" href="#main">跳到主内容</a>
+<div id="gate" class="gate" hidden><a class="brand" href="/ai/">星屿</a><h1>登录总管理后台</h1><p>使用已获授权的网站账号登录。</p><form id="login-form"><label for="username">邮箱或原账号</label><input id="username" name="username" autocomplete="username" required maxlength="254"><label for="password">密码</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="128"><button type="submit">登录后台</button></form><p id="gate-error" role="alert"></p><a href="/ai/">返回网站 · 找回密码</a></div>
+<div id="shell" class="shell" hidden>
+<header class="top"><a class="brand" href="/ai/admin/"><img src="data:image/jpeg;base64,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" alt="星屿头像" width="40" height="40"><span class="brand-copy"><strong>星屿</strong><small>陪伴服务管理</small></span></a><div class="enterprise-control"><label for="enterprise-select">查看范围</label><select id="enterprise-select"><option value="all">总览 · 全部企业</option><option value="ww0000000000000002">星屿 01 · 新用户</option><option value="ww0000000000000003">星屿 02 · 新用户</option><option value="legacy">原企业 · 现有用户</option></select></div><div><span id="identity"></span><a href="/ai/">个人空间</a><button id="logout" class="quiet">退出</button></div></header>
+<button id="menu-toggle" class="secondary mobile-menu" type="button" aria-expanded="false" aria-controls="admin-sidebar">后台栏目<span id="current-view-label">运营概览</span></button>
+<div class="layout"><aside id="admin-sidebar"><nav id="primary-navigation" aria-label="后台栏目"><div class="nav-group primary-sections"><button type="button" data-section="overview">运营总览</button><button type="button" data-section="users">用户与应用</button><button type="button" data-section="billing">账务与用量</button><button type="button" data-section="content">人格与内容</button><button type="button" data-section="system">系统管理</button></div><details id="nav-history" class="nav-history"><summary>历史资料</summary><div class="nav-group"><button type="button" data-view="wallet">历史模拟余额</button></div></details></nav><p class="sidebar-note">每一份陪伴，安心运转。<br>企业资料独立，操作留有记录。</p></aside>
+<main id="main">
+<p id="enterprise-scope" class="scope-line"></p>
+<nav id="section-navigation" class="section-navigation" aria-label="栏目内页面" hidden><div data-nav-section="overview" hidden><button type="button" data-view="dashboard">运营概览</button><button type="button" data-view="business">经营汇总</button></div><div data-nav-section="users" hidden><button type="button" data-view="accounts">用户账号</button><button type="button" data-view="apps">应用与运行</button><button type="button" data-view="onboarding">开通申请</button></div><div data-nav-section="billing" hidden><button type="button" data-view="starcoin">星币账户</button><button type="button" data-view="payments">支付订单</button><button type="button" data-view="usage">用量统计</button><button type="button" data-view="shadow">成本分析</button><button type="button" data-view="prices">计费价格</button></div><div data-nav-section="content" hidden><button type="button" data-view="templates">官方人格模板</button><button type="button" data-view="public-stickers">公共表情包</button><button type="button" data-view="defaults">全局默认设置</button></div><div data-nav-section="system" hidden><button type="button" data-view="jobs">维护任务</button><button type="button" data-view="audit">操作记录</button></div></nav>
+<div id="notice" class="notice" role="status" hidden></div>
+<section id="view-templates" hidden>
+<div class="section-head"><div><h1>官方人格模板</h1><p>把喜欢的人格，分享给每一位用户。两家企业和独立应用使用同一份模板库。</p></div><button id="templates-refresh" type="button" class="secondary">重新读取</button></div>
+<p id="templates-status" class="report-status" role="status" aria-live="polite"></p>
+<p id="templates-default-note" class="help"></p>
+<div class="template-layout"><div><div class="template-list-head"><h2>模板库</h2><button id="template-new" type="button" class="secondary">新建模板</button></div><div id="templates-list"></div></div>
+<form id="template-editor" hidden><h2 id="template-editor-title">新建模板</h2><p id="template-version" class="help"></p>
+<details id="template-card-import" class="template-card-import"><summary>导入角色卡</summary>
+<p class="help" id="template-card-help">上传 TXT、JSON、YAML 或内嵌角色数据的 PNG，也可以粘贴文本。先识别和预览，再填入下方分项表单。</p>
+<label for="template-card-file">选择角色卡</label><input id="template-card-file" type="file" accept=".txt,.json,.yaml,.yml,.png" aria-describedby="template-card-help">
+<label for="template-card-text">角色卡内容</label><textarea id="template-card-text" rows="6" maxlength="60000" placeholder="在这里粘贴角色的性格、背景、说话方式、世界书等资料"></textarea>
+<p class="help">文本最多 6 万字、文件最多 2 MB，PNG 最多 15 MB。标准 JSON 直接读取；普通文本使用现有模型整理，会产生模型用量。</p>
+<div class="template-card-actions"><button id="template-card-parse" type="button" class="secondary">识别角色卡</button><button id="template-card-clear" type="button" class="quiet">清空导入</button></div>
+<p id="template-card-status" class="template-status" role="status" aria-live="polite"></p>
+<section id="template-card-preview" hidden aria-labelledby="template-card-result-heading"><h3 id="template-card-result-heading" tabindex="-1">核对识别结果</h3>
+<p id="template-card-result-note" class="help"></p><dl id="template-card-result"></dl>
+<label class="template-check"><input id="template-card-original" type="checkbox" checked>保留原文到“补充设定”，便于继续核对</label>
+<p class="help">标准卡仅保留人物资料和启用的世界书条目。填入会替换人格分项；名称与介绍仅在识别到内容时更新。头像、参考图和语音可继续单独设置。</p>
+<p id="template-card-length" class="help"></p><button id="template-card-apply" type="button">确认填入表单</button></section>
+</details>
+<div class="template-jumps"  aria-label="模板编辑分区"><a href="#template-basic-heading">基本资料与头像</a><a href="#template-reference-heading">人物参考图</a><a href="#template-profile-heading">人格设定</a><a href="#template-voice-heading">语音设置</a></div><h3 id="template-basic-heading">基本资料</h3><label for="template-name">人格名称</label><input id="template-name" maxlength="40" required placeholder="例如：大肥鱼">
+<label for="template-intro">一句介绍</label><textarea id="template-intro" maxlength="500" rows="3" placeholder="让用户了解 TA 的性格和相处方式"></textarea>
+<label for="template-avatar-file">人格头像</label><input id="template-avatar-file" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="template-avatar-help"><p id="template-avatar-help" class="help">选择图片后拖动、缩放裁剪。支持 15 MB 以内的 PNG、JPEG、WebP。</p>
+<div class="template-avatar-line"><img id="template-avatar-preview" alt="模板头像预览" width="80" height="80" hidden><button id="template-avatar-recrop" type="button" class="secondary" hidden>重新裁剪</button><button id="template-avatar-clear" type="button" class="secondary">清除头像</button></div>
+<div id="template-crop-editor" class="template-crop" hidden><h3>裁剪头像</h3><p id="template-crop-help" class="help">拖动图片调整位置，用滑杆缩放。方框内的区域会保留，圆圈用于预览头像效果。</p>
+<canvas id="template-crop-canvas" class="template-crop-canvas" width="720" height="720" tabindex="0" aria-label="头像裁剪区域，方向键移动图片" aria-describedby="template-crop-help">可使用下方位置滑杆调整裁剪区域。</canvas>
+<label for="template-crop-zoom">缩放 <output id="template-crop-zoom-value">1.00 倍</output></label><input id="template-crop-zoom" type="range" min="1" max="4" value="1" step="0.01">
+<details><summary>微调位置</summary><label for="template-crop-x">水平位置</label><input id="template-crop-x" type="range" min="0" max="100" value="50"><label for="template-crop-y">垂直位置</label><input id="template-crop-y" type="range" min="0" max="100" value="50"></details>
+<div class="template-crop-buttons"><button id="template-crop-confirm" type="button">确认裁剪</button><button id="template-crop-reset" type="button" class="secondary">重置位置</button><button id="template-crop-cancel" type="button" class="quiet">取消裁剪</button></div></div>
+<p id="template-avatar-status" class="template-status" role="status" aria-live="polite"></p>
+<fieldset class="template-voice template-reference" id="template-reference-heading"><legend>人物参考图</legend>
+<p class="help">用于生图时保持人物外貌和画风，与展示头像分开。使用模板时一起填入人格，用户点击“保存设置”后生效。</p>
+<label for="template-reference-file">选择参考图</label><input id="template-reference-file" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="template-reference-help">
+<p id="template-reference-help" class="help">建议上传主体清晰的单个人物图。支持 15 MB 以内的图片，自动压缩并保留完整画面。</p>
+<img id="template-reference-preview" alt="人物参考图预览" class="template-reference-image" hidden>
+<button id="template-reference-analyze" type="button" class="secondary" disabled>自动识别外貌与画风</button>
+<button id="template-reference-clear" type="button" class="secondary" disabled>移除参考图</button>
+<div id="template-reference-fields" hidden>
+<label for="template-reference-appearance">外貌特征</label><textarea id="template-reference-appearance" rows="3" maxlength="600" placeholder="五官、发型发色、体态、标志性特征；服装和背景不作为固定外貌"></textarea>
+<label for="template-reference-style">画风说明</label><textarea id="template-reference-style" rows="3" maxlength="600" placeholder="例如：柔和的日系插画，细腻线条、低饱和色彩、温暖光影。只描述画风，不包含人物和场景。"></textarea>
+<p class="help">上传后自动识别外貌与画风，结果可继续修改；已有图片可点击“自动识别”。识别会产生模型用量，失败时也可手动填写。</p></div>
+<p id="template-reference-status" class="template-status" role="status" aria-live="polite"></p></fieldset>
+
+<h3 id="template-profile-heading">人格设定</h3><p class="help">与个人设置页的字段一致。逐项填写，用户使用模板后可以继续编辑。</p><p id="template-legacy-note" class="help template-form-note" hidden>旧模板中不能准确拆分的内容已完整保留在“补充设定 / 模板原文”，你可以继续整理，不会自动改写。</p><div id="template-profile-fields" class="template-form-grid"></div>
+<fieldset class="template-voice" id="template-voice-heading"><legend>随人格切换的语音</legend>
+<label class="template-check"><input id="template-voice-enabled" type="checkbox">模板包含语音设置</label>
+<p class="help">启用后，用户选择此模板时会一起应用以下设置；用户之后可以自行修改。</p>
+<div id="template-voice-fields" hidden>
+<label for="template-voice-provider">语音服务</label><select id="template-voice-provider"><option value="breeze">Breeze</option><option value="tencent">腾讯云</option><option value="openai">兼容语音服务</option></select>
+<label for="template-voice-choice">选择音色</label><select id="template-voice-choice" aria-describedby="template-voice-choice-help"></select><p id="template-voice-choice-help" class="help">按音色名称选择，编号和名称会自动填写。</p>
+<details id="template-voice-custom"><summary>自定义音色 / 查看编号</summary><label for="template-voice-id">音色编号</label><input id="template-voice-id" maxlength="100"><datalist id="template-voice-list"></datalist><label for="template-voice-name">音色名称</label><input id="template-voice-name" maxlength="80" placeholder="填写自定义音色名称"></details>
+<label for="template-voice-speed">语速</label><input id="template-voice-speed" type="number" min="0.5" max="2" step="0.05" value="1">
+<label for="template-voice-language">语音语言</label><select id="template-voice-language"><option value="zh">中文</option><option value="en">英语</option><option value="ja">日语</option></select>
+<div class="template-voice-audition"><button id="template-voice-preview" type="button" class="secondary" aria-describedby="template-voice-preview-help">试听音色</button>
+<p id="template-voice-preview-help" class="help">按当前音色、语速和语言试听。优先复用已有音频，首次生成消耗语音服务额度。</p>
+<audio id="template-voice-audio" controls preload="none" aria-label="当前模板音色试听" hidden></audio>
+<p id="template-voice-preview-status" class="help" role="status" aria-live="polite"></p></div>
+<label for="template-voice-rate">发送语音的意愿</label><select id="template-voice-rate"><option value="0">无</option><option value="25">低</option><option value="50">中</option><option value="100">高</option></select>
+<label class="template-check"><input id="template-voice-emotion" type="checkbox">使用音色支持的情绪表达</label><label class="template-check"><input id="template-voice-subtitles" type="checkbox">外语语音附带中文字幕</label>
+<p class="help">语音意愿控制主动程度，并非每条必发。实际生成语音按现有星币规则计费。应用不支持所选音色时会提示用户并关闭自主语音。</p></div></fieldset>
+
+
+<p class="help">保存草稿不会影响当前已发布版本。发布新版本后，已有用户自行决定是否更新。</p>
+<div class="template-actions"><button id="template-preview-button" type="button" class="secondary">预览草稿</button><button id="template-publish" type="button" class="secondary">发布版本</button><button id="template-withdraw" type="button" class="danger">下架模板</button><button id="template-default" type="button" class="secondary">设为新用户默认</button></div>
+<p id="template-feedback" role="status" aria-live="polite"></p>
+<section id="template-preview" hidden><h3 id="template-preview-title"></h3><p id="template-preview-intro"></p><details><summary>完整人格设定</summary><pre id="template-preview-prompt"></pre></details></section>
+<div class="template-save-bar"><span id="template-draft-state" role="status" aria-live="polite">修改后保存草稿</span><button id="template-save" type="submit">保存草稿</button></div></form></div></section>
+
+<section id="view-apps" hidden><div class="heading"><div><h1>应用与运行</h1><p id="summary">正在读取应用状态…</p></div><button id="refresh" class="secondary">刷新状态</button></div><div class="toolbar"><label class="search" for="search">查找应用<input id="search" type="search" placeholder="名称、应用 ID 或归属成员"></label><label for="status-filter">运行状态<select id="status-filter"><option value="all">全部状态</option><option value="running">运行中</option><option value="stopped">已停止</option><option value="error">需要关注</option></select></label><label for="pool-filter">应用归属<select id="pool-filter"><option value="all">全部归属</option><option value="assigned">已分配</option><option value="free">待分配</option><option value="independent">独立试点</option><option value="attention">开通异常</option></select></label></div>
+<div class="batch"><span id="selection">未选择应用</span><div><button id="batch-config" class="secondary write" disabled>批量设置规则</button><button data-operation="backup" class="secondary write batch-op" disabled>备份所选</button><button data-operation="release" class="secondary write batch-op" disabled>更新所选版本</button></div></div>
+<div class="table-wrap"><table class="apps-table"><thead><tr><th class="check"><input id="select-all" type="checkbox" aria-label="选择当前列表全部应用"></th><th>应用</th><th>运行状态</th><th>归属</th><th>模型与版本</th><th>处理情况</th><th><span class="sr-only">操作</span></th></tr></thead><tbody id="app-rows"><tr><td colspan="7" class="empty">正在读取应用列表…</td></tr></tbody></table></div><p class="footnote">“仅验证”表示服务已运行，但 AI 回复关闭。开通失败或未分配的应用需先完成原有开通流程。</p></section>
+<section id="view-detail" hidden><button id="back" class="back">返回全部应用</button><div class="heading"><div><h1 id="detail-title">应用设置</h1><p id="detail-subtitle"></p></div><button id="detail-refresh" class="secondary">重新读取</button></div>
+<dl id="detail-ownership" class="ownership" aria-label="应用归属"></dl>
+<div class="detail-nav"><a href="#configuration">模型与互动规则</a><a href="#maintenance">运行维护</a><a href="#backup-section">备份与恢复</a></div>
+<form id="config-form"><section id="configuration" class="section"><h2>模型配置</h2><p>密钥仅可替换，不会显示。保存模型配置会短暂重建该应用服务。</p><div class="fields"><div><label for="model">模型名称</label><input id="model" required maxlength="120" placeholder="例如 deepseek-chat"></div><div><label for="base-url">服务地址</label><input id="base-url" type="url" required placeholder="https://api.deepseek.com"></div><div><label for="api-key">新模型密钥</label><input id="api-key" type="password" autocomplete="new-password" maxlength="512" placeholder="留空保留当前密钥"><small id="key-status"></small></div><label class="toggle"><input id="ai-enabled" type="checkbox">启用 AI 回复</label></div></section>
+<section class="section"><h2>互动规则</h2><p>默认仅影响尚未保存对应选项的用户。勾选覆盖后，仅同步本次改动的规则。</p><div id="detail-options" class="options-grid"></div><label class="toggle"><input id="apply-existing" type="checkbox">同时覆盖此应用已有用户的对应设置</label><button class="write" type="submit">检查并保存设置</button></section></form>
+<section id="maintenance" class="section"><h2>运行维护</h2><p>操作仅作用于当前应用。停止后，该应用将无法接收聊天与发送消息。</p><div class="actions"><button data-operation="start" class="secondary detail-op write">启动应用</button><button data-operation="restart" class="secondary detail-op write">重启应用</button><button data-operation="stop" class="danger detail-op write">停止应用</button><button data-operation="release" class="secondary detail-op write">更新到已验证版本</button></div><h3>近期处理状态</h3><div id="events" class="rows"></div><div class="reclaim-area"><h3>回收至应用池</h3><p>解除当前用户绑定并清理应用中的用户资料。执行前单独保存备份，完成后恢复为待分配。</p><p id="reclaim-status" class="footnote" role="status"></p><button id="reclaim-button" class="danger write" disabled>回收至应用池</button></div><div id="app-delete-area" class="reclaim-area" hidden><h3>删除应用</h3><p>先回收用户资料，再停止应用并退出自动分配。企业微信里的应用需到官方管理后台删除，最后在这里人工确认并移除。</p><p id="app-delete-status" class="footnote" role="status"></p><button id="app-delete-button" class="danger" disabled>开始删除应用</button><p class="footnote">网站账号、余额、充值与账务记录保留；应用文件会转入管理员私有归档。</p></div></section>
+<section id="backup-section" class="section"><div class="section-top"><div><h2>备份与恢复</h2><p>备份保存在服务器，包含代码、配置与数据库。恢复会覆盖备份时间之后的聊天与设置。</p></div><button data-operation="backup" class="secondary detail-op write">创建备份</button></div><div id="backups" class="rows"></div></section></section>
+
+<section id="view-defaults" data-defaults-version="2" hidden>
+<div class="heading"><div><h1>全局默认设置</h1><p>为当前企业设定一致的陪伴习惯。用户仍可在个人设置中调整。</p></div><button id="defaults-refresh" class="secondary">重新读取</button></div>
+<div class="defaults-overview"><div><span class="defaults-eyebrow">当前生效范围</span><strong id="defaults-enterprise">正在读取…</strong><span id="defaults-agent-count"></span></div><p>编辑后手动保存，只有本次修改的项目会被提交。</p></div>
+<p id="defaults-status" role="status">正在读取当前企业的默认模板…</p><p id="defaults-error" role="alert" class="defaults-error" hidden></p>
+<form id="defaults-form" hidden>
+<div class="defaults-voice-parking" hidden><p id="defaults-voices" role="status"></p><button id="defaults-voice-refresh" type="button" class="secondary">重新读取音色</button></div>
+<fieldset id="defaults-fields"><legend class="sr-only">编辑当前企业的默认选项</legend><div id="defaults-groups"></div></fieldset>
+<section class="section defaults-scope"><h2>生效范围</h2><p>每次保存都会更新当前企业的默认模板，之后新分配的应用自动继承。</p>
+<label class="toggle"><input id="defaults-sync" type="checkbox">同时同步到当前企业全部现有应用</label>
+<p id="defaults-targets" class="footnote"></p>
+<label class="toggle"><input id="defaults-existing" type="checkbox" disabled>同时覆盖已有用户的对应选项</label>
+<p id="defaults-scope-note" class="defaults-scope-note">仅更新当前企业的默认模板，供之后新分配的应用继承。</p>
+<details class="defaults-scope-help"><summary>了解同步规则</summary><p>只同步本次修改的选项。人物、记忆内容、聊天记录、所在地和应用专属配置不在覆盖范围内。开启天气后，用户仍需选择所在地；问候方式不会自动开启问候或修改发送时间。</p></details>
+</section>
+<div class="defaults-actions"><span id="defaults-selected" role="status" aria-live="polite">尚未修改设置</span><div><button id="defaults-reset" type="button" class="quiet" disabled>撤销修改</button><button id="defaults-save" type="submit" disabled>检查并保存</button></div></div>
+</form></section>
+
+
+<section id="view-usage" hidden>
+<div class="heading"><div><h1>用量统计</h1><p>查看各应用和企业微信成员的 Token、生图和语音用量，日期按北京时间统计。</p></div></div>
+<form id="usage-form" class="toolbar usage-filters"><label for="usage-start">开始日期<input id="usage-start" type="date" required></label><label for="usage-end">结束日期<input id="usage-end" type="date" required></label><label for="usage-agent">应用<select id="usage-agent"><option value="">全部应用</option></select></label><label for="usage-user">企业微信成员 ID<input id="usage-user" maxlength="200" placeholder="留空查看全部成员"></label><label for="usage-resource">用量类型<select id="usage-resource"><option value="token">聊天 Token</option><option value="image">生图调用</option><option value="tts">语音合成</option></select></label><label for="usage-group">汇总方式<select id="usage-group"><option value="app">按应用</option><option value="user">按用户</option><option value="day">按日期</option><option value="model">按模型</option><option value="purpose">按调用用途</option></select></label><button id="usage-query" type="submit">查询用量</button></form>
+<p id="usage-summary" class="usage-summary" role="status">选择条件后查询用量。</p><p id="usage-quality" class="footnote"></p><p id="usage-error" role="alert" hidden></p>
+<p id="usage-message" class="empty" role="status" hidden></p><p class="usage-scroll-hint">宽度不足时，可左右滑动表格查看完整用量。</p><div id="usage-table-wrap" class="table-wrap"><table class="usage-table"><thead><tr id="usage-head"><th>应用</th><th id="usage-dimension">用户账号</th><th>模型请求</th><th>输入 token</th><th>输出 token</th><th>已知总量</th><th>缓存命中</th><th>用量不完整</th></tr></thead><tbody id="usage-rows"></tbody></table></div>
+<div class="usage-pagination"><button id="usage-prev" class="secondary" disabled>上一页</button><span id="usage-page"></span><button id="usage-next" class="secondary" disabled>下一页</button></div>
+<p id="usage-method" class="footnote">一条回复可能包含多次模型请求。主动联系、识图、人物卡解析、回复修复等均计入；缓存和推理 token 是输入或输出中的子项。总量仅累计服务商已返回的用量，“—”表示未提供。图片生成、语音合成等费用不折算为聊天 token。</p>
+<p id="usage-since" class="footnote">从功能启用后开始记录，之前的历史用量无法准确补算。恢复聊天备份不会回退累计用量。</p>
+</section>
+<section id="view-prices" hidden><div class="heading"><div><h1>计费价格</h1><p>管理聊天、图片与语音的成本价和正式计费售价。</p></div><button id="prices-refresh" class="secondary" type="button">重新读取</button></div>
+<p id="prices-status" class="report-status" role="status" aria-live="polite"></p><div id="prices-content" hidden><section class="section shadow-prices" aria-labelledby="shadow-prices-title"><h2 id="shadow-prices-title">当前计费价表</h2><p>售价同时用于新请求的星币计费，按1元＝1000星币换算。保存新版本后对之后锁价的请求生效，已锁价消费不重算。</p><p>服务商域名和模型名称须与用量记录完全匹配。价格单位：Token 为元 / 百万，图片为元 / 张，语音为元 / 千字。</p>
+<p id="price-revision" class="footnote"></p>
+<div class="table-wrap"><table class="shadow-rate-table"><thead><tr><th>类型 / 服务商 / 模型</th><th>参考成本价</th><th>计费售价</th><th>版本 / 状态</th></tr></thead><tbody id="price-rows"></tbody></table></div>
+<form id="price-form" class="shadow-price-form">
+  <fieldset id="price-fields"><legend>新增价格版本</legend>
+  <label for="price-observed">选择已有价格规则<select id="price-observed"><option value="">手动填写规则</option></select></label>
+  <div class="fields">
+    <label for="price-kind">类型<select id="price-kind"><option value="token">聊天 Token</option><option value="image">生图</option><option value="tts">语音</option></select></label>
+    <label for="price-provider">服务商域名<input id="price-provider" maxlength="255" required placeholder="例如 api.example.com" autocapitalize="none" spellcheck="false"></label>
+    <label for="price-model">模型 / 音色标识<input id="price-model" maxlength="160" required placeholder="与账本完全一致" spellcheck="false"></label>
+  </div>
+  <p id="price-unit-help" class="footnote">元 / 百万 Token。留空表示未定价，填 0 表示明确免费。</p>
+  <div id="price-token-fields" class="fields">
+    <label for="price-cost-input">输入成本价<input id="price-cost-input" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+    <label for="price-sale-input">输入售价<input id="price-sale-input" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+    <label for="price-cost-output">输出成本价<input id="price-cost-output" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+    <label for="price-sale-output">输出售价<input id="price-sale-output" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+    <label for="price-cost-cached">缓存输入成本价（可选）<input id="price-cost-cached" type="number" min="0" max="99999999" step="0.000001" placeholder="留空同普通输入"></label>
+    <label for="price-sale-cached">缓存输入售价（可选）<input id="price-sale-cached" type="number" min="0" max="99999999" step="0.000001" placeholder="留空同普通输入"></label>
+  </div>
+  <div id="price-unit-fields" class="fields" hidden>
+    <label for="price-cost-unit">单位成本价<input id="price-cost-unit" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+    <label for="price-sale-unit">单位售价<input id="price-sale-unit" type="number" min="0" max="99999999" step="0.000001" placeholder="未定价"></label>
+  </div>
+  <label class="toggle"><input id="price-schedule" type="checkbox">DeepSeek 官方分时价（填写空闲价，高峰自动乘 2）</label><p class="footnote">分时按北京时间工作日 9:00–12:00、14:00–18:00，排除节假日。目前已核对 2026 年日历，其他年份显示待核对。</p>
+  <label class="toggle"><input id="price-enabled" type="checkbox" checked>启用此计费规则</label>
+  <button id="price-save" type="submit">保存价格版本</button>
+  </fieldset>
+</form><p id="price-message" role="status"></p><p id="price-permission" class="footnote" hidden>仅超级管理员可以调整价格，其他管理员可查看价表。</p>
+<details class="shadow-history"><summary>最近价格变更</summary><div id="price-history" class="rows"></div></details>
+</section></div><div class="actions"><button type="button" data-go="shadow" class="secondary">查看成本分析</button></div></section>
+<section id="view-shadow" hidden>
+<div class="heading"><div><h1>成本分析</h1><p>按当前价表复算参考成本与售价。实际消费请查看星币账户，价格设置请进入“计费价格”。</p></div></div>
+<div class="actions analysis-links"><button type="button" data-go="prices" class="secondary">管理计费价格</button><button type="button" data-go="starcoin" class="quiet">查看实际消费</button></div><p class="shadow-policy">按当前价表重新试算所选期间。参考成本并非服务商最终账单，拟收费并非用户欠款。缺少价格或用量的记录显示“待核对”，不会当作免费。</p>
+<form id="shadow-form" class="toolbar usage-filters">
+  <label for="shadow-start">开始日期<input id="shadow-start" type="date" required></label>
+  <label for="shadow-end">结束日期<input id="shadow-end" type="date" required></label>
+  <label for="shadow-agent">应用<select id="shadow-agent"><option value="">全部应用</option></select></label>
+  <label for="shadow-user">企业微信成员 ID<input id="shadow-user" maxlength="200" placeholder="留空查看全部成员"></label>
+  <label for="shadow-kind">用量类型<select id="shadow-kind"><option value="">全部类型</option><option value="token">聊天 Token</option><option value="image">生图</option><option value="tts">语音</option></select></label>
+  <label for="shadow-group">汇总方式<select id="shadow-group"><option value="app">按应用</option><option value="user">按用户</option><option value="day">按日期</option><option value="model">按模型</option><option value="purpose">按用途</option><option value="request">逐笔明细</option></select></label>
+  <button id="shadow-query" type="submit">查询分析</button>
+</form>
+<p id="shadow-summary" class="usage-summary" role="status"></p>
+<p id="shadow-quality" class="footnote"></p><p id="shadow-error" role="alert" hidden></p>
+<p id="shadow-empty" class="empty" hidden></p>
+<p class="usage-scroll-hint">宽度不足时，可左右滑动查看完整明细。金额单位：人民币元。</p>
+<div id="shadow-table-wrap" class="table-wrap"><table class="shadow-table"><thead><tr id="shadow-head"></tr></thead><tbody id="shadow-rows"></tbody></table></div>
+<div class="usage-pagination"><button id="shadow-prev" class="secondary" disabled>上一页</button><span id="shadow-page"></span><button id="shadow-next" class="secondary" disabled>下一页</button></div>
+<details class="shadow-method"><summary>成本分析口径</summary><p>Token 按服务商返回的输入、输出用量分别计算；缓存价留空时，全部输入使用普通输入价，不重复计算推理 Token。配置缓存价但接口未返回缓存数量时，金额待核对。Token 失败但已返回完整用量时仍计算参考成本，拟收费排除失败。旧 Token 记录无法区分内部重试；费用试算用于核对成本，不作为真实账单。</p><p>图片按成功返回的图片张数计算，一次返回多张分别计价；现有账本未记录尺寸，暂按模型统一价格。语音按成功合成字数计算，含标点、空格和换行，每个 Unicode 字符计一字；缓存播放不重复计入。媒体重试及音色试听计算成本、拟收费为零。接口成功不等于微信送达。</p><p>超时、结果未知及用量缺失单独标记。仅当成本和拟收费都完整时，才计算该笔参考差额；差额未包含服务器、支付和其他经营成本。本页按当前价表做参考分析，不会修改已锁价消费。正式价格在“计费价格”管理；上线前的模拟记录收在“历史资料 → 历史模拟余额”。</p></details>
+</section>
+
+<section id="view-dashboard" hidden>
+<div class="heading"><div><h1 id="dashboard-title">运营概览</h1><p>先看需要处理的事，让每一份陪伴稳定继续。</p></div><button id="dashboard-refresh" type="button">刷新概览</button></div>
+<p id="dashboard-status" class="report-status" role="status"></p><div id="dashboard-content" hidden>
+<div class="health-line"><div><span id="health-indicator" class="status ok">服务状态</span><h2 id="health-title"></h2><p id="health-description"></p></div><button data-go="apps" class="secondary">查看应用</button></div>
+<p id="overview-warning" class="notice error" role="status" hidden></p><section id="enterprise-breakdown" class="enterprise-breakdown" aria-label="各企业概况" hidden><div class="section-heading"><h2>各企业概况</h2><small>进入企业查看明细与管理</small></div><div id="enterprise-breakdown-rows"></div></section>
+<div class="overview-columns"><section class="overview-primary"><div class="section-heading"><h2>需要关注</h2><small id="attention-scope">按当前企业汇总</small></div><div id="attention-list" class="task-lines"></div>
+<div class="section-heading"><h2>最近的开通申请</h2><button data-go="onboarding" class="quiet">查看全部</button></div><div id="recent-onboarding" class="task-lines"></div></section>
+<section class="overview-secondary"><h2>充值通道</h2><p class="section-caption">全站共用 · 实时配置</p><div id="dashboard-channels" class="channel-lines"></div><button data-go="payments" class="secondary">查看支付订单</button><p class="footnote">通道开放与服务运行分开显示。订单到账核对使用本地账本。</p></section></div>
+</div></section>
+
+<section id="view-scope" hidden><div class="heading"><div><h1 id="scope-title">全部企业</h1><p id="scope-description">各企业资料直接展示。</p></div></div><div id="scope-choices" class="task-lines"></div></section>
+
+<section id="view-onboarding" hidden><div class="heading"><div><h1>开通申请</h1><p>查看应用开通和实际使用进度。</p></div><button id="onboarding-refresh" class="secondary">重新读取</button></div>
+<form id="onboarding-form" class="toolbar report-filters"><label class="search" for="onboarding-q">查找申请<input id="onboarding-q" type="search" maxlength="200" placeholder="网站账号、应用 ID 或名称"></label><label for="onboarding-state">申请状态<select id="onboarding-state"><option value="">全部状态</option><option value="needs_inspection">需要检查</option><option value="waiting_pool">等待分配</option><option value="opened">已开通（全部）</option><option value="in_use">已在使用</option><option value="pending_first_chat">待首次聊天</option><option value="usage_unknown">使用情况待核对</option><option value="assignment_changed">应用归属待核对</option><option value="queued">排队中</option><option value="provisioning">正在开通</option><option value="failed">开通未完成</option><option value="reclaimed">已回收</option></select></label><button type="submit">查询申请</button></form>
+<p id="onboarding-status" class="report-status" role="status"></p><div id="onboarding-content" hidden><div id="onboarding-summary" class="summary-line"></div><div id="onboarding-rows" class="application-lines"></div><div class="usage-pagination"><button id="onboarding-prev" class="secondary">上一页</button><span id="onboarding-page"></span><button id="onboarding-next" class="secondary">下一页</button></div></div></section>
+
+<section id="view-payments" hidden><div class="heading"><div><h1>支付订单</h1><p>把付款与到账放在一起核对，保留每笔订单原来的报价。</p></div><button id="payments-refresh" class="secondary">重新核对</button></div>
+<details class="channel-disclosure"><summary>充值通道与开放档位 <span>全站配置</span></summary><div id="payment-channels" class="channel-lines"></div><p class="footnote">此页只展示状态。通道启停及商户密钥沿用现有发布流程。</p></details>
+<form id="payments-form" class="toolbar report-filters payment-filters"><label for="payments-start">订单开始日期<input id="payments-start" type="date" required></label><label for="payments-end">订单结束日期<input id="payments-end" type="date" required></label><label for="payments-provider">支付渠道<select id="payments-provider"><option value="">全部渠道</option><option value="wechat">微信支付</option><option value="alipay">支付宝</option></select></label><label for="payments-state">订单状态<select id="payments-state"><option value="">全部状态</option><option value="paid">已支付</option><option value="pending">待支付</option><option value="expired">已过期</option><option value="closed">已关闭</option><option value="attention">到账待核对</option></select></label><label for="payments-q">订单或成员<input id="payments-q" type="search" maxlength="200" placeholder="输入订单号或成员 ID"></label><label for="payments-user">指定成员（精确）<input id="payments-user" maxlength="200" placeholder="留空查询全部成员"></label><button type="submit">查询订单</button></form>
+<p id="payments-status" class="report-status" role="status"></p><div id="payments-content" hidden><p id="payments-summary" class="summary-line"></p><p id="payments-method" class="footnote report-method"></p><div id="payments-rows" class="order-lines"></div><div class="usage-pagination"><button id="payments-prev" class="secondary">上一页</button><span id="payments-page"></span><button id="payments-next" class="secondary">下一页</button></div></div></section>
+
+<section id="view-business" hidden><div class="heading"><div><h1>经营汇总</h1><p>收款、赠送与消耗各有口径，分开看更清楚。</p></div><button id="business-refresh" class="secondary">重新读取</button></div>
+<form id="business-form" class="toolbar report-filters"><label for="business-start">开始日期<input id="business-start" type="date" required></label><label for="business-end">结束日期<input id="business-end" type="date" required></label><button type="submit">汇总所选期间</button></form>
+<p id="business-status" class="report-status" role="status"></p><div id="business-content" hidden><p id="business-period" class="summary-line"></p><dl id="business-summary" class="financial-summary"></dl><p class="footnote report-method">收款按支付入账时间统计；消费按扣费流水时间统计。充值赠送包含在充值到账中，首次赠送单列。余额是预付资金，收款减消费不能视作利润。</p>
+<section class="section"><h2>按渠道核对</h2><div class="table-wrap"><table><thead><tr><th>渠道</th><th>支付笔数</th><th>收款 / 元</th><th>本金 / 星币</th><th>赠送 / 星币</th><th>到账 / 星币</th></tr></thead><tbody id="business-channel-rows"></tbody></table></div></section>
+<section class="section"><h2>每日收款</h2><div class="table-wrap"><table><thead><tr><th>日期（北京时间）</th><th>订单数</th><th>收款 / 元</th><th>到账 / 星币</th></tr></thead><tbody id="business-daily-rows"></tbody></table></div></section><p id="business-cost-note" class="footnote"></p></div></section>
+
+<section id="view-starcoin" hidden><div class="heading"><div><h1>星币账户</h1><p>同一企业成员跨应用共用余额，充值、赠送与消费均可追溯。</p></div><button id="starcoin-refresh" class="secondary">刷新账户</button></div>
+<form id="starcoin-form" class="toolbar report-filters"><label class="search" for="starcoin-q">查找成员<input id="starcoin-q" type="search" placeholder="名称、网站账号或成员 ID" maxlength="200"></label><label for="starcoin-state">账户状态<select id="starcoin-state"><option value="active">正常账户</option><option value="closed">已注销 / 注销中</option><option value="all">全部账户</option></select></label><button type="submit">查询账户</button></form><p id="starcoin-status" class="report-status" role="status"></p><div id="starcoin-content" hidden><div class="table-wrap"><table class="wallet-table"><thead><tr><th>企业微信成员</th><th>可用 / 星币</th><th>余额 / 星币</th><th>预留 / 星币</th><th>操作</th></tr></thead><tbody id="starcoin-rows"></tbody></table></div><div class="usage-pagination"><button id="starcoin-prev" class="secondary">上一页</button><span id="starcoin-page"></span><button id="starcoin-next" class="secondary">下一页</button></div><p class="footnote">默认仅显示正常账户；已注销账户可切换状态查账，余额不清零、不自动退款。历史订单和流水保留，已注销账户不可继续使用。预留仅包含未过期的生成请求。</p></div></section>
+
+<section id="view-profile" hidden><button id="profile-back" class="back">返回星币账户</button><div class="heading"><div><h1 id="profile-title">账户账务</h1><p id="profile-subtitle"></p></div><button id="profile-refresh" class="secondary">重新读取</button></div><p id="profile-status" class="report-status" role="status"></p><div id="profile-content" hidden><dl id="profile-summary" class="financial-summary"></dl><p id="profile-integrity" class="footnote"></p><div class="actions"><button id="profile-payments" class="secondary">查看此成员充值订单</button><button id="profile-usage" class="secondary">查看此成员用量</button></div><section id="profile-recharges" class="section" aria-labelledby="profile-recharge-title"><h2 id="profile-recharge-title">充值记录</h2><p class="footnote">充值和赠送单独列出，赠送不属于充值。</p><div id="profile-recharge-items" class="profile-record-list"></div><div class="usage-pagination"><button id="profile-recharge-prev" class="secondary" type="button">上一页</button><span id="profile-recharge-page"></span><button id="profile-recharge-next" class="secondary" type="button">下一页</button></div></section>
+<section class="section" aria-labelledby="profile-usage-title"><h2 id="profile-usage-title">用量记录</h2><dl id="profile-usage-summary" class="profile-usage-summary" aria-label="最近用量统计"></dl><p class="footnote">按过去24小时、7天、30天的使用时间统计已扣星币，已退回的费用不计入；待核对、待扣费的用量结算后计入。</p><p id="profile-events" class="footnote"></p><details id="profile-usage-details" class="profile-record-details"><summary><span>详细记录</span><span id="profile-bill-count"></span></summary><p class="footnote">同一轮对话或同一批表情包整理合并展示，展开可看各项用量。语音和图片会直接标出。</p><p class="footnote">金额显示到小数点后一位，各项分别四舍五入，与合计可能略有差异。实际扣费按原始精度计算。</p><div id="profile-bills"></div><div class="usage-pagination"><button id="profile-prev" class="secondary" type="button">上一页</button><span id="profile-page"></span><button id="profile-next" class="secondary" type="button">下一页</button></div></details></section>
+<details id="profile-ledger" class="profile-record-details"><summary>原始余额流水 · 查账用</summary><p class="footnote">保留每笔余额变动、编号和原始精度，用于核对账本。</p><div id="profile-ledger-status" role="status"></div><div class="table-wrap"><table class="profile-ledger"><thead><tr><th>时间 / 编号</th><th>类型</th><th>变动 / 星币</th><th>余额 / 星币</th><th>关联订单或请求</th></tr></thead><tbody id="profile-rows"></tbody></table></div><div class="usage-pagination"><button id="profile-ledger-prev" class="secondary" type="button">上一页</button><span id="profile-ledger-page"></span><button id="profile-ledger-next" class="secondary" type="button">下一页</button></div><button id="profile-ledger-retry" class="secondary" type="button" hidden>重新读取流水</button></details>
+</div></section>
+
+<section id="view-customer" hidden><button id="customer-back" class="back">返回用户账号</button><div class="heading"><div><h1 id="customer-title">用户详情</h1><p id="customer-subtitle">网站账号及跨企业的应用与账务</p></div><button id="customer-refresh" class="secondary">重新读取</button></div><p id="customer-status" class="report-status" role="status"></p><div id="customer-content" hidden><section class="section"><h2>应用归属</h2><div id="customer-apps" class="task-lines"></div></section><section class="section"><h2>关联星币账户</h2><p class="footnote">仅展示身份已确认或人工专属关联的账户。待确认的开通申请不用于推断账务归属。</p><div id="customer-wallets" class="task-lines"></div></section><section class="section"><h2>开通进度</h2><div id="customer-onboarding" class="task-lines"></div></section></div></section>
+
+<section id="view-pilot" hidden><button id="pilot-back" class="back">返回应用与运行</button><div class="heading"><div><h1>星屿 · 本人试点</h1><p>独立应用 1000002 · 不参与新用户分配</p></div></div><dl id="pilot-info" class="financial-summary"></dl><p class="footnote">此处用于查看运行情况。独立试点的发布与维护沿用专属流程。</p></section>
+<section id="view-wallet" hidden>
+<div class="heading"><div><h1>历史模拟余额</h1><p>仅供核对上线星币前的模拟记录，模拟资金不转入星币。</p></div><button id="wallet-refresh" class="secondary">刷新账户</button></div>
+<p class="notice">旧模拟账本已归档，仅供查询。当前消费请查看“星币账户”；星币余额不足会暂停新生成，可在个人设置中使用微信或支付宝充值。</p>
+<p id="wallet-message" role="status"></p>
+<details class="wallet-create" hidden><summary>开通模拟账户</summary><form id="wallet-create-form" class="fields">
+<label for="wallet-create-agent">所属应用<select id="wallet-create-agent" required></select></label>
+<label for="wallet-create-user">企业微信成员 UserID<input id="wallet-create-user" maxlength="200" required placeholder="填写成员 UserID，不能使用昵称"></label>
+<p class="footnote">同一企业成员跨应用共用余额。账户从开通时开始记录用量，初始余额为 0，不追扣历史。仅超级管理员可开通。</p>
+<button id="wallet-create-submit" type="submit">开通模拟账户</button></form></details>
+<p id="wallet-list-note" class="footnote"></p>
+<div class="table-wrap"><table class="wallet-table"><thead><tr><th>成员 / 企业</th><th>模拟余额</th><th>用量核对</th><th>开通时间</th><th>操作</th></tr></thead><tbody id="wallet-rows"></tbody></table></div>
+<section id="wallet-detail" class="section" hidden aria-labelledby="wallet-detail-title">
+<div class="section-top"><div><h2 id="wallet-detail-title">账户明细</h2><p id="wallet-selected"></p></div><button id="wallet-sync" hidden>同步用量并模拟扣费</button></div>
+<p id="wallet-balance" class="usage-summary"></p><p id="wallet-integrity" class="footnote"></p>
+<p class="footnote">首次可计价时锁定金额和价格版本；待定价、用量缺失的请求不扣费。余额不足的请求保留，充值后再次同步会重试；已冲正的扣费不会再次扣款。</p>
+<form id="wallet-credit-form" class="wallet-credit fields" hidden><label for="wallet-credit-amount">模拟充值金额（元）<input id="wallet-credit-amount" type="number" min="0.01" max="1000000" step="0.01" required placeholder="例如 10.00"></label>
+<label for="wallet-credit-note">充值备注<input id="wallet-credit-note" maxlength="200" required placeholder="例如：扣费流程测试"></label>
+<button id="wallet-credit-submit" type="submit">确认模拟充值</button><p class="footnote">仅超级管理员可操作，不代表实际收到付款。</p></form>
+<h3>充值与扣费流水</h3><p class="usage-scroll-hint">可左右滑动查看完整流水。冲正会新增反向流水，保留原记录。</p>
+<div class="table-wrap"><table class="wallet-ledger"><thead><tr><th>时间 / 编号</th><th>类型</th><th>变动金额</th><th>变动后余额</th><th>关联应用 / 请求</th><th>备注 / 操作者</th><th>操作</th></tr></thead><tbody id="wallet-entry-rows"></tbody></table></div>
+<div class="usage-pagination"><button id="wallet-entry-prev" class="secondary">上一页</button><span id="wallet-entry-page"></span><button id="wallet-entry-next" class="secondary">下一页</button></div>
+<form id="wallet-reverse-form" class="wallet-reverse" hidden><h3>冲正模拟流水</h3><p id="wallet-reverse-selected"></p><label for="wallet-reverse-note">冲正原因<input id="wallet-reverse-note" maxlength="200" required></label><label class="toggle"><input id="wallet-reverse-confirm" type="checkbox" required>确认冲正上方所选模拟流水</label><div class="actions"><button id="wallet-reverse-submit" class="danger" type="submit">确认冲正</button><button id="wallet-reverse-cancel" class="secondary" type="button">取消</button></div></form>
+<h3>已同步用量</h3><p class="footnote">这里只显示账户开通后已同步的请求。金额“—”表示尚不能确定；“需复核”表示锁价后的源用量有变化，系统不会自动改扣。</p>
+<div class="table-wrap"><table class="wallet-events"><thead><tr><th>时间 / 请求编号</th><th>应用</th><th>资源 / 用量</th><th>拟扣金额</th><th>状态 / 口径</th><th>价格版本</th></tr></thead><tbody id="wallet-event-rows"></tbody></table></div>
+<div class="usage-pagination"><button id="wallet-event-prev" class="secondary">上一页</button><span id="wallet-event-page"></span><button id="wallet-event-next" class="secondary">下一页</button></div>
+</section></section>
+
+<section id="view-accounts" hidden><div class="heading"><div><h1>用户账号</h1><p>显示全部网站账号及其跨企业应用归属，管理后台权限和账号注销。</p></div><button id="accounts-refresh" class="secondary">刷新账号</button></div><form id="accounts-query-form" class="filters admin-list-filters"><div><label for="accounts-q">账号、名称或应用 ID</label><input id="accounts-q" maxlength="200" placeholder="查找成员"></div><div><label for="accounts-role">后台权限</label><select id="accounts-role"><option value="">全部权限</option><option value="member">普通成员</option><option value="viewer">只读管理员</option><option value="operator">运维管理员</option><option value="superadmin">超级管理员</option></select></div><div><label for="accounts-enterprise">应用所在企业</label><select id="accounts-enterprise"><option value="">全部企业</option><option value="ww0000000000000002">星屿 01</option><option value="ww0000000000000003">星屿 02</option><option value="legacy">原企业</option></select></div><button type="submit">查询</button></form><p id="accounts-query-status" role="status" aria-live="polite"></p><p class="footnote">超级管理员可分配权限；运维管理员可修改应用；只读管理员可查看状态。至少保留一位超级管理员。</p><div class="table-wrap"><table class="accounts-table"><thead><tr><th>网站账号</th><th>应用归属</th><th>后台权限</th><th>注册时间</th><th>权限调整</th><th>账号管理</th></tr></thead><tbody id="account-rows"></tbody></table></div><div class="usage-pagination"><button id="accounts-prev" class="secondary" type="button">上一页</button><span id="accounts-page"></span><button id="accounts-next" class="secondary" type="button">下一页</button></div><p class="footnote">注销仅限超级管理员。管理员、人工配置成员及受保护应用会被拦截；注销前会核对全部关联应用。</p><section id="account-closure-section" class="section" hidden><h2>账号注销记录</h2><p>注销未完成时保持登录冻结。核对原因后可继续，系统会保留原处理进度。</p><div id="account-closures"></div></section></section>
+<section id="view-jobs" hidden><div class="heading"><div><h1>维护任务</h1><p>批量操作按应用依次执行。失败结果单独保留，刷新后仍可查看。</p></div><button id="jobs-refresh" class="secondary">刷新任务</button></div><form id="jobs-query-form" class="filters admin-list-filters"><div><label for="jobs-q">操作人或操作类型</label><input id="jobs-q" maxlength="200"></div><div><label for="jobs-agent">应用 ID</label><input id="jobs-agent" type="number" min="1" max="1999999" placeholder="全部应用"></div><div><label for="jobs-status">执行状态</label><select id="jobs-status"><option value="">全部状态</option><option value="pending">等待执行</option><option value="running">执行中</option><option value="done">已完成</option><option value="failed">失败</option><option value="interrupted">中断</option></select></div><div><label for="jobs-start">开始日期</label><input id="jobs-start" type="date"></div><div><label for="jobs-end">结束日期</label><input id="jobs-end" type="date"></div><button type="submit">查询</button></form><p id="jobs-query-status" role="status" aria-live="polite"></p><section id="app-deletion-records" class="section" hidden aria-labelledby="app-deletions-title"><h2 id="app-deletions-title">应用删除进度</h2><p>企业微信删除需要在官方管理后台完成。此处保留各步骤进度，可在刷新或中断后继续。</p><div id="app-deletion-rows" class="job-list"></div></section><div id="job-rows" class="job-list"></div><div class="usage-pagination"><button id="jobs-prev" class="secondary" type="button">上一页</button><span id="jobs-page"></span><button id="jobs-next" class="secondary" type="button">下一页</button></div></section>
+<section id="view-audit" hidden><div class="heading"><div><h1>操作记录</h1><p>记录操作账号、目标应用和结果，不记录模型密钥或聊天正文。</p></div><button id="audit-refresh" class="secondary">刷新记录</button></div><form id="audit-query-form" class="filters admin-list-filters"><div><label for="audit-q">操作人或操作类型</label><input id="audit-q" maxlength="200"></div><div><label for="audit-agent">应用 ID</label><input id="audit-agent" type="number" min="1" max="1999999" placeholder="全部应用"></div><div><label for="audit-start">开始日期</label><input id="audit-start" type="date"></div><div><label for="audit-end">结束日期</label><input id="audit-end" type="date"></div><button type="submit">查询</button></form><p id="audit-query-status" role="status" aria-live="polite"></p><div class="table-wrap"><table><thead><tr><th>时间</th><th>操作人</th><th>操作</th><th>应用</th><th>结果</th></tr></thead><tbody id="audit-rows"></tbody></table></div><div class="usage-pagination"><button id="audit-prev" class="secondary" type="button">上一页</button><span id="audit-page"></span><button id="audit-next" class="secondary" type="button">下一页</button></div></section>
+<section id="view-public-stickers" hidden>
+ <div class="section-head"><div><h1>公共表情包</h1><p>跨企业共享。由管理员上传和维护，用户勾选并保存后可在聊天中使用。</p></div><button id="pool-refresh" class="secondary" type="button">刷新列表</button></div>
+ <p class="help">最多 500 张，处理后单张 512 KB 以内，支持 PNG / JPEG / GIF / WebP。使用原有表情发送规则，不另调用图片生成；GIF 动画能否播放取决于微信客户端。</p>
+ <div class="toolbar"><button id="pool-new" type="button">添加图片</button><span id="pool-count" class="muted"></span></div>
+ <p id="pool-status" class="notice" role="status" aria-live="polite"></p>
+ <details id="pool-upload-disclosure"><summary>添加新表情（批量上传）</summary><section id="pool-batch" class="pool-batch" aria-labelledby="pool-batch-heading">
+  <h2 id="pool-batch-heading">批量添加表情包</h2><p class="help">和设置页一样：添加图片 → 自动识别 → 核对预览 → 上传并上架。</p>
+  <div class="pool-batch-fields"><label>图片名称前缀（可选）<input id="pool-prefix" maxlength="40" placeholder="留空使用文件名，多张自动加序号"></label><div><label for="pool-batch-mood">这批图片的情绪分类</label><select id="pool-batch-mood"></select><button id="pool-apply-mood" class="quiet" type="button">应用到所有待上传图片</button></div></div>
+  <label class="toggle"><input id="pool-auto-analyze" type="checkbox" checked>添加图片后自动识别分类和画面含义</label><p class="help">从16个固定类目中选择，动图按预览帧理解。拿不准的图片需手动确认分类后再上架；已手动修改的内容会保留。</p>
+  <button id="pool-reanalyze" class="quiet" type="button" disabled>重试未识别的图片</button>
+  <div id="pool-drop" class="pool-drop" role="group" aria-label="批量添加公共表情包"><strong>把表情包拖到这里</strong><span class="help">也可以一次选择多张图片，手机同样支持多选。</span><button id="pool-pick" class="secondary" type="button">选择图片</button><input id="pool-files" type="file" accept="image/png,image/jpeg,image/gif,image/webp,.webp" multiple hidden></div>
+  <p class="help">支持 PNG、JPEG、GIF、WebP。静态大图自动压缩，静态 WebP 转为 PNG，动态 WebP 转为 GIF 并保留动画（原图最多800 KB）；处理后的图片需在512 KB以内。公共池最多500张。</p>
+  <div class="pool-queue-head"><strong id="pool-queue-summary">还没有待上传图片</strong><button id="pool-clear" class="quiet" type="button" disabled>清空列表</button></div>
+  <div id="pool-queue" class="pool-queue" aria-label="待上传公共表情"></div>
+  <div class="actions"><button id="pool-upload" type="button" disabled>上传并上架</button><button id="pool-pause" class="secondary" type="button" hidden>暂停后续上传</button><span id="pool-capacity" class="help" role="status"></span></div>
+  <progress id="pool-progress" max="1" value="0" aria-label="本批上传进度" hidden></progress><p id="pool-batch-status" class="help" role="status" aria-live="polite"></p>
+ </section>
+ </details><section class="pool-library" aria-labelledby="pool-library-heading">
+  <h2 id="pool-library-heading">公共表情库</h2>
+  <div class="pool-library-filters"><label>按分类查看<select id="pool-filter-mood"><option value="">全部分类</option></select></label><label>识别状态<select id="pool-filter-analysis"><option value="">全部状态</option><option value="pending">尚未识别</option><option value="recognized">已识别</option><option value="manual">已有手动说明</option></select></label></div>
+  <p id="pool-filter-count" class="help" role="status"></p>
+  <div class="pool-selection-tools"><label class="toggle"><input id="pool-select-page" type="checkbox">勾选本页</label><button id="pool-select-filtered" type="button" class="quiet">选择筛选结果</button><button id="pool-selection-clear" type="button" class="quiet">清空选择</button><span id="pool-selected-count" class="help" role="status"></span><button id="pool-recognize-selected" type="button" class="secondary" disabled>识别选中图片</button></div>
+ </section>
+ <section id="pool-recognition" class="pool-recognition" hidden aria-labelledby="pool-recognition-heading">
+  <h2 id="pool-recognition-heading">重新识别已上传图片</h2>
+  <p class="help">开始后会调用现有识图模型，按平台接口计费。先生成预览，核对后点击“保存识别结果”才更新公共池。保留图片、名称、上下架状态和原分类；可逐张决定是否使用建议分类。</p>
+  <div class="actions"><button id="pool-recognition-start" type="button">开始识别</button><button id="pool-recognition-pause" type="button" class="secondary" hidden>暂停后续识别</button><button id="pool-recognition-save" type="button" disabled>保存识别结果</button><button id="pool-recognition-clear" type="button" class="quiet">关闭本批</button></div>
+  <p id="pool-recognition-status" class="help" role="status" aria-live="polite"></p><progress id="pool-recognition-progress" max="1" value="0" aria-label="重新识别进度"></progress>
+  <div id="pool-recognition-items"></div>
+ </section>
+ <form id="pool-editor" class="pool-editor" hidden>
+  <h2 id="pool-editor-title">上传新表情</h2>
+  <input id="pool-file" type="file" disabled hidden><img id="pool-preview" width="144" height="144" alt="待上传的公共表情" hidden>
+  <div class="grid"><div><label for="pool-label">名称</label><input id="pool-label" maxlength="40" required placeholder="例如：开心挥手"></div><div><label for="pool-mood">表达分类</label><select id="pool-mood" required></select></div></div>
+  <label for="pool-description">画面含义与语气</label><textarea id="pool-description" rows="3" maxlength="300" required placeholder="例如：小猫微笑挥手，语气轻松友好，适合打招呼。"></textarea>
+  <label for="pool-text">图中可见文字（选填）</label><input id="pool-text" maxlength="200" placeholder="没有文字可留空">
+  <div class="grid"><div><label for="pool-scenes">适用场景（选填，每行一项）</label><textarea id="pool-scenes" rows="3" maxlength="480" placeholder="早安问候&#10;轻松打招呼"></textarea></div><div><label for="pool-avoid">不适用场景（选填，每行一项）</label><textarea id="pool-avoid" rows="3" maxlength="480" placeholder="严肃话题&#10;用户正在难过"></textarea></div></div>
+  <p class="help">这些说明供 AI 选图参考。新图片点击下方按钮后立即上架；修改已有表情保留当前上下架状态。</p>
+  <div class="actions"><button id="pool-save" type="submit">上传并上架</button><button id="pool-cancel" type="button" class="secondary">取消</button></div><p id="pool-editor-status" role="status" aria-live="polite"></p>
+ </form>
+ <div id="pool-items" class="pool-items"></div><div class="toolbar"><button id="pool-prev" type="button" class="secondary" disabled>上一页</button><span id="pool-page" class="muted"></span><button id="pool-next" type="button" class="secondary" disabled>下一页</button></div>
+</section>
+</main></div><footer>星屿 · 应用管理 <span id="updated"></span></footer></div>
+<dialog id="app-delete-dialog" aria-labelledby="app-delete-title"><form method="dialog"><button class="close quiet" aria-label="关闭删除确认" value="cancel">关闭</button></form><h2 id="app-delete-title">删除应用</h2><p id="app-delete-description"></p><div id="app-delete-summary" class="review"></div><label id="app-delete-official-label" class="toggle" hidden><input id="app-delete-official-confirm" type="checkbox">我已在正确企业的管理后台删除此应用，并核对 AgentId。此项为人工确认。</label><label for="app-delete-id">请输入应用 ID 确认<input id="app-delete-id" inputmode="numeric" autocomplete="off"></label><p id="app-delete-error" role="alert"></p><div class="actions"><button id="app-delete-cancel" class="secondary">取消</button><button id="app-delete-submit" class="danger" disabled>确认</button></div></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><form method="dialog"><button class="close quiet" aria-label="关闭确认窗口" value="cancel">关闭</button></form><h2 id="confirm-title">确认操作</h2><p id="confirm-description"></p><div id="confirm-summary" class="review"></div><label id="confirm-restore-label" for="restore-confirm" hidden><span id="confirm-id-label">请输入应用 ID，确认覆盖数据库</span><input id="restore-confirm" inputmode="numeric" autocomplete="off"></label><label id="protected-confirm-label" class="toggle" hidden><input id="protected-confirm" type="checkbox">我确认手动回收此受保护应用，并保留企业成员及其他应用。</label><div id="confirm-message" role="alert"></div><div class="actions"><button id="confirm-cancel" class="secondary">取消</button><button id="confirm-run">确认执行</button></div></dialog>
+<dialog id="batch-dialog" aria-labelledby="batch-title"><form method="dialog"><button class="close quiet" aria-label="关闭批量设置窗口">关闭</button></form><h2 id="batch-title">批量设置互动规则</h2><p>只修改勾选的规则。未勾选的字段和每位用户的人格保持原状。</p><form id="batch-form"><div id="batch-options" class="batch-options"></div><label class="toggle"><input id="batch-existing" type="checkbox">同时覆盖已有用户的对应规则</label><button type="submit">预览影响范围</button></form></dialog>
+<div id="loading" class="initial" role="status">正在验证后台权限…</div>
+
+<dialog id="defaults-review" aria-labelledby="defaults-review-title">
+<button type="button" id="defaults-review-close" class="close quiet" aria-label="关闭确认窗口">关闭</button>
+<h2 id="defaults-review-title">确认修改与生效范围</h2><p>请核对本次修改和生效范围。现有应用同步前会自动备份，结果记录在维护任务中。</p>
+<div id="defaults-review-summary" class="review"></div><p id="defaults-review-error" role="alert" class="defaults-error"></p>
+<div class="actions"><button type="button" id="defaults-review-cancel" class="secondary">返回修改</button><button type="button" id="defaults-review-save">确认保存</button></div>
+</dialog>
+
+<dialog id="account-delete-dialog" aria-labelledby="account-delete-title" aria-describedby="account-delete-state">
+<button id="account-delete-close" class="close quiet" type="button">关闭</button>
+<h2 id="account-delete-title">注销网站账号</h2><p id="account-delete-name"></p><p id="account-delete-state" role="status"></p>
+<div id="account-delete-summary" class="review"></div>
+<label id="account-delete-entry" for="account-delete-input" hidden>输入上方完整网站账号<input id="account-delete-input" autocomplete="off" spellcheck="false"></label>
+<p id="account-delete-error" role="alert"></p>
+<div class="actions"><button id="account-delete-cancel" class="secondary" type="button">取消</button><button id="account-delete-run" class="danger" type="button" hidden>确认注销账号</button></div>
+</dialog>
+<dialog id="task-ack-dialog" aria-labelledby="task-ack-title"><form id="task-ack-form"><h2 id="task-ack-title">核对维护任务</h2><p id="task-ack-summary"></p><p>仅调整待办提醒，保留原执行结果，不会重新执行任务。</p><label for="task-ack-note">核对结果与备注</label><textarea id="task-ack-note" maxlength="300" rows="4" required></textarea><p id="task-ack-error" role="alert"></p><div class="actions"><button id="task-ack-cancel" type="button" class="secondary">取消</button><button id="task-ack-submit" type="submit">标记已核对</button></div></form></dialog><dialog id="pool-viewer" class="pool-viewer" aria-labelledby="pool-viewer-title"><div class="pool-viewer-head"><h2 id="pool-viewer-title">查看表情</h2><button id="pool-viewer-close" type="button" class="secondary" autofocus>关闭</button></div><div class="pool-viewer-stage"><img id="pool-viewer-image" alt=""><p id="pool-viewer-error" role="status" hidden>图片暂时无法读取，请重试或查看原图。</p></div><div class="pool-viewer-tools"><button id="pool-viewer-prev" type="button" class="secondary">上一张</button><span id="pool-viewer-position" class="help"></span><button id="pool-viewer-next" type="button" class="secondary">下一张</button><label>缩放<input id="pool-viewer-zoom" type="range" min="1" max="3" step="0.25" value="1"></label><a id="pool-viewer-original" target="_blank" rel="noopener">查看原图</a></div><p id="pool-viewer-description" class="help"></p></dialog>
+
+</body></html>

@@ -1,0 +1,11 @@
+[Unit]
+Description=Check interrupted Xiaoshengyi application assignments every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=5s
+Unit=xiaoyi-app-pool-recover.service
+
+[Install]
+WantedBy=timers.target

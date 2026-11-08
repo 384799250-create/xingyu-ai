@@ -1,0 +1,47 @@
+services:
+  kf-assistant:
+    image: wecom-deepseek-assistant:voice-quality-20261028-123913
+    pull_policy: never
+    command: ["python", "/service/companion_app.py"]
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./kf_app.py:/service/kf_app.py:ro
+      - ./member_app.py:/service/member_app.py:ro
+      - ./reply_pipeline.py:/service/reply_pipeline.py:ro
+      - ./token_meter.py:/service/token_meter.py:ro
+      - ./autonomous_media.py:/service/autonomous_media.py:ro
+      - ./lifecycle.py:/service/lifecycle.py:ro
+      - ./companion_app.py:/service/companion_app.py:ro
+      - ./suite_app.py:/service/suite_app.py:ro
+      - ./memory_engine.py:/service/memory_engine.py:ro
+      - ./greeting_app.py:/service/greeting_app.py:ro
+      - kf-data:/data
+      - /home/ubuntu/wecom-kf/voice-preview-cache:/voice-preview-cache
+    networks:
+      - kf-network
+    expose:
+      - "8088"
+    mem_limit: 384m
+    cpus: 1.0
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8088/health',timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "3"
+volumes:
+  kf-data:
+networks:
+  kf-network:
+    external: true
+    name: ${HOSPITAL_NETWORK:?HOSPITAL_NETWORK is required}

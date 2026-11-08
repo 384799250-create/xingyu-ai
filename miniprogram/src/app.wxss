@@ -1,0 +1,26 @@
+page{background:#f7f5f0;color:#283d37;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;font-size:28rpx;line-height:1.75}
+view,text,input,textarea,button{box-sizing:border-box}
+button{font:inherit;font-weight:600;border-radius:22rpx;line-height:1.6;padding:22rpx 28rpx;min-height:92rpx;margin:0}
+button::after{border:0}
+.primary{background:#246b57;color:#fff}
+.secondary{background:#edf1e9;color:#283d37}
+button[disabled]{background:#e5ebe3!important;color:#526653!important;opacity:1}
+.text-button{background:transparent;color:#246b57;min-height:88rpx;font-size:26rpx;font-weight:400;padding:20rpx 0}
+.muted{color:#53685d;font-size:26rpx}
+.page{padding:32rpx 36rpx 56rpx;max-width:1000rpx;margin:auto}
+.title{font-size:52rpx;font-weight:600;line-height:1.5;margin:0 0 10rpx;overflow-wrap:break-word}
+.subtitle{color:#53685d;font-size:26rpx;margin-bottom:44rpx}
+.surface{background:#fff;border-radius:32rpx;padding:40rpx;margin-bottom:32rpx}
+.section-title{font-size:38rpx;font-weight:600;line-height:1.55;margin-bottom:20rpx;overflow-wrap:break-word}
+.notice{font-size:24rpx;color:#53685d;margin-bottom:28rpx;line-height:1.8}
+.state{display:inline-block;color:#246b57;background:#eaf1e8;border-radius:14rpx;padding:8rpx 18rpx;font-size:24rpx;max-width:100%;overflow-wrap:break-word;margin:24rpx 0 32rpx}
+.error{color:#8f3b32;background:#faeae4;border-radius:20rpx;padding:24rpx;margin-bottom:24rpx;font-size:26rpx}
+.label{font-size:28rpx;font-weight:600;margin-bottom:18rpx;display:block}
+.field{margin-bottom:32rpx}
+.control{width:100%;border:2rpx solid #dde3d8;border-radius:22rpx;padding:20rpx 24rpx;background:#fff;line-height:1.8;color:#283d37;font-size:30rpx}
+input.control{height:96rpx}
+textarea.control{min-height:196rpx}
+.placeholder{color:#69766c}
+.savebar{position:sticky;bottom:24rpx;bottom:max(24rpx,env(safe-area-inset-bottom));border-radius:28rpx;background:#fff;padding:24rpx;display:flex;align-items:center;gap:20rpx;margin:32rpx 0;box-shadow:0 -8rpx 48rpx #27372c0b}
+.savebar .muted{flex:1;font-size:24rpx}
+.savebar button{min-width:216rpx;flex-shrink:0;font-size:26rpx}

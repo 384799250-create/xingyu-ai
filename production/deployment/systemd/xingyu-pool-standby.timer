@@ -1,0 +1,11 @@
+[Unit]
+Description=Keep unused Xingyu applications dormant
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=5s
+Unit=xingyu-pool-standby.service
+
+[Install]
+WantedBy=timers.target

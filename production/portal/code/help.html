@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#166356">
+  <meta name="description" content="星屿使用说明与常见问题：微信连接、人格与人物卡、世界书、图片语音和个人设置。">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/ai/style.css">
+  <link rel="stylesheet" href="/ai/help.css">
+  <title>使用说明与常见问题 · 星屿</title>
+</head>
+<body>
+<header class="top"><a class="brand" href="/ai/">星屿<span>使用说明</span></a><a href="/ai/">我的 AI</a></header>
+<main class="help-page">
+  <h1>从这里，慢慢熟悉彼此</h1>
+  <p class="help-intro">微信里聊天，设置页里调整相处方式。这里整理了第一次使用和日常聊天中常见的问题。</p>
+  <nav class="help-nav" aria-label="文档目录"><a href="#start">开始使用</a><a href="#persona">人格设定</a><a href="#features">聊天与功能</a><a href="#problems">遇到问题</a></nav>
+
+  <section id="start" aria-labelledby="start-title">
+    <h2 id="start-title">开始使用</h2>
+    <h3>还没有自己的 AI</h3>
+    <ol><li>在<a href="/ai/">我的 AI</a>使用邮箱和验证码注册（已有账号可继续登录），填写<strong>自己绑定微信的手机号</strong>，确认并申请开通。无需短信验证码。</li><li>开通后，用这个手机号对应的普通微信扫描页面二维码，关注后打开页面显示的 AI 应用。</li><li>即可在微信中开始聊天。需要调整人格、记忆或回复方式时，向自己的 AI 发送 <code>我要设置</code>，直接打开微信返回的设置页。</li></ol>
+    <p>二维码是本企业共用的微信关注入口，你使用的 AI 由成员与应用分配确定。无需另外绑定网页账号，个人设置统一从微信返回的链接进入。</p>
+    <h3>已经有自己的 AI</h3>
+    <p>在原来的微信 AI 对话中发送 <code>我要设置</code>，直接打开返回的设置页即可，无需另外注册或绑定。已有企微成员或已有 AI 的手机号，请勿重复申请新的应用。</p>
+    <h3>两个常用指令</h3>
+    <dl><dt><code>我要设置</code></dt><dd>获取自己的设置链接。自生成起固定 15 分钟内可重复打开，过期后重新发送指令。</dd><dt><code>/帮助</code></dt><dd>随时查看这份使用说明；<code>/help</code> 也可以。</dd></dl>
+  </section>
+
+  <section id="persona" aria-labelledby="persona-title">
+    <h2 id="persona-title">把 ta 变成你心中的那个 ta</h2>
+    <details open><summary>怎么创建或修改人格？</summary><p>在个人设置中选择当前人格，或新建一个人格，再编辑性格、表达方式、人物背景和称呼。保存后，后续新回复会按当前人格设置生成。</p><p>“当前人格”是你管理和切换的角色名称；“人格自称”是角色称呼自己的方式；“称呼我”是角色对你的称呼。这三项可以不同，不会固定要求称呼你为“主人”。</p></details>
+    <details><summary>人物卡怎么导入？</summary><p>可以粘贴人物卡内容，也可以在人物卡区域选择或拖入文件，支持的格式以页面提示为准。识别后检查人物名称、自称、对你的称呼以及其他字段，再确认保存。</p><p>通过人物卡创建时会新建角色，不覆盖默认人格。自动识别可能遗漏或误判，尤其是昵称、别名和复杂排版，保存前可以自行修改。</p></details>
+    <details><summary>世界书有什么用？</summary><p>世界书用于补充人物所处世界的背景、关系和规则，影响后续回答的方向。请写清楚需要遵守的设定，并保存到对应人格。设置是给模型的约束，实际回答仍可能有偏差，可以继续补充或调整。</p></details>
+    <details><summary>能修改微信里 AI 的名字和头像吗？</summary><p>具备应用管理权限时，可以从对应设置入口调整本独立应用的名称和头像。企业 logo 与聊天应用头像是不同位置。若看不到入口或提交失败，请联系管理员核对权限和平台返回结果。</p></details>
+  </section>
+
+  <section id="features" aria-labelledby="features-title">
+    <h2 id="features-title">聊天与功能</h2>
+    <details><summary>为什么有时一条回复，有时多条？</summary><p>开启连续回复，表示允许 AI 按语境发送多条消息，并不要求每次都多发。人格、问题内容和模型实际输出都会影响条数。连续发送的消息按系统发送间隔依次提交；微信显示时间也受网络影响。</p></details>
+    <details><summary>怎么让 AI 发图片？</summary><p>可以直接说“给我画一只猫”“来一张海边的照片”等具体要求，也可以说明比例和内容。能否生成、支持哪些比例和清晰度，取决于管理员配置的生图接口与模型。</p><p>生成可能需要等待。请先看聊天提示或“运行与发送状态”，避免因等待而反复提交。图片是 AI 生成内容，不能作为真实拍摄或现实事件的证明。</p></details>
+    <details><summary>能识别微信语音，或用语音回复吗？</summary><p>可以按当前配置尝试直接发送微信语音。语音识别、语音合成是不同的能力，分别依赖对应接口；没有开通或配置的能力无法仅靠聊天模型名称获得。</p><p>回复方式、音色等以个人设置中的可用选项为准。识别有误时，可以补发文字纠正。</p></details>
+    <details><summary>表情包怎么添加？为什么不一定每次都发？</summary><p>在有权限的表情包管理区域选择或拖入图片文件，按页面提示完成上传。自动识别内容与分类需要可用的识别服务，请检查上传结果后再使用。</p><p>发送频率、内容匹配和近期使用情况共同影响选择，设置的频率不代表固定每隔几条发送一次；没有合适素材时可能只回复文字。</p></details>
+    <details><summary>怎么设置提醒？</summary><p>请明确时间和要做的事，例如“10 分钟后提醒我喝水”。确认 AI 已建立提醒，并在设置页的运行状态中检查任务。聊天里的一句答应本身不等于定时任务成功创建；发送失败时也应查看具体记录。</p></details>
+    <p class="help-note">不同独立应用的接口、权限和可用功能可能不同，以你的设置页和实际提示为准。工具额度、冷却间隔及服务费用由当前配置决定。</p>
+  </section>
+
+  <section id="problems" aria-labelledby="problems-title">
+    <h2 id="problems-title">遇到问题</h2>
+    <details><summary>设置链接失效、无法打开怎么办？</summary><p>回到你自己的 AI 对话，发送 <code>我要设置</code> 获取新链接。复制时保留完整的 <code>#token=…</code> 部分。请不要使用别人的链接，也不要把自己的链接转发到群聊或其他人。</p><p>设置统一在微信给出的专属页面中管理，无需把设置链接提交到网站。</p></details>
+    <details><summary>扫码后看不到应用怎么办？</summary><p>确认使用的是申请时填写手机号对应的微信，并已关注企业微信插件；再核对网页显示的应用名称。已有企微成员、手机号填错、应用可见范围或激活状态异常，需要管理员核查，反复注册不能解决。</p></details>
+    <details><summary>消息没有回复，或图片、语音一直没到？</summary><p>先查看设置页的“运行与发送状态”，判断是排队、接口失败还是平台发送失败。平台接收不代表已读。若设置页也打不开，请记录大致时间、应用名称和不含密钥的错误提示，交给管理员排查。</p><p>不要在截图中公开 API Key、企微 Secret、验证码或带 token 的设置链接。</p></details>
+    <details><summary>为什么没有再次收到首次开场白？</summary><p>每位用户在对应 AI 中首次使用时发送一次。切换人格、清空会话和服务重启不会让它反复出现；功能上线前已使用过的用户也不会被补发打扰。需要文档发送 <code>/帮助</code>，需要新链接发送 <code>我要设置</code>。</p></details>
+    <details><summary>邮箱怎么验证？忘记网页密码怎么办？</summary><p>新账号注册时已验证邮箱，邮箱就是登录账号，可直接用于找回密码。已有账号可登录网页，在“账号与安全 → 找回密码邮箱”中补绑并验证邮箱。</p><p>忘记密码时，在登录页点“忘记密码”，填写账号和已验证邮箱，获取验证码后设置新密码。验证码 10 分钟内有效，只能使用一次。没有收到邮件时，检查垃圾邮件并核对地址。</p><p>已绑定 AI 的账号仍可展开“使用微信设置链接找回”，用自己 AI 返回的新链接核验。没有已验证邮箱且未绑定 AI 的账号，请联系管理员核查。</p></details>
+  </section>
+  <p class="help-bottom">准备好了，就<a href="/ai/">回到我的 AI</a>。这份文档不包含任何人的专属设置链接。</p>
+</main>
+<footer>星屿<span>微信里相遇，在这里设定。</span></footer>
+</body>
+</html>

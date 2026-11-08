@@ -1,0 +1,131 @@
+<view class="page">
+  <view wx:if="{{mode === 'entry'}}">
+    <view class="title">我的空间</view>
+    <view class="subtitle">把 TA 调整成你喜欢的样子，慢慢来就好。</view>
+    <view class="surface">
+      <view class="section-title">{{phoneReady && bindingPending ? '找到你的聊天伙伴' : bindingPending ? '首次连接，找到你的 TA' : '连接你的 TA'}}</view>
+      <view class="muted">{{phoneReady && bindingPending ? '首次授权微信手机号，自动找到你的应用，以后打开就能进入。' : bindingPending ? '验证一次应用归属，以后这个微信会自动进入对应的应用。' : '已有应用可以直接连接，保留原来的人格和设置。'}}</view>
+      <block wx:if="{{canConnect}}">
+        <button wx:if="{{wechatReady}}" class="{{bindingPending ? 'text-button' : 'primary connect-wechat'}}" bindtap="connectWeChat" loading="{{loading}}" disabled="{{loading}}">{{bindingPending ? '重新获取连接验证' : '微信连接我的应用'}}</button>
+        <block wx:if="{{phoneReady && bindingPending}}">
+          <block wx:if="{{phonePending}}">
+            <view class="phone-progress" role="status">{{phoneMessage || '正在准备你的应用。'}}</view>
+            <button class="primary" bindtap="checkPhoneProgress" loading="{{loading}}" disabled="{{loading}}">查看开通进度</button>
+            <button class="text-button" bindtap="retryPhoneAuthorization" disabled="{{loading}}">一直没有进展？重新授权手机号</button>
+          </block>
+          <block wx:elif="{{phoneNeedsApp}}">
+            <view class="phone-progress">还没有找到你的应用。开通后，选好人格并保存，就可以回微信聊天。</view>
+            <view class="notice">使用刚授权的微信手机号开通，请确保与添加应用的微信手机号一致。</view>
+            <button class="primary phone-action" bindtap="applyPhone" loading="{{loading}}" disabled="{{loading}}">开通我的应用</button>
+            <button class="text-button" bindtap="retryPhoneAuthorization" disabled="{{loading}}">重新授权手机号</button>
+          </block>
+          <block wx:else>
+            <view class="notice phone-progress">请授权当前微信使用的手机号。已有应用会自动连接，新用户可以继续开通。</view>
+            <button class="primary" open-type="getPhoneNumber" bindgetphonenumber="connectPhone" loading="{{loading}}" disabled="{{loading}}">授权手机号，连接我的应用</button>
+          </block>
+          <button class="text-button" bindtap="toggleOtherMethods" disabled="{{loading}}">{{otherMethods ? '收起其他方式' : '使用其他连接方式'}}</button>
+        </block>
+        <block wx:if="{{(!wechatReady || bindingPending || manualConnection) && (!phoneReady || otherMethods || manualConnection)}}">
+        <view class="connection-methods">
+          <button class="method-button {{loginMethod === 'link' ? 'method-active' : ''}}" data-method="link" bindtap="chooseLoginMethod" disabled="{{loading}}">用设置链接</button>
+          <button class="method-button {{loginMethod === 'account' ? 'method-active' : ''}}" data-method="account" bindtap="chooseLoginMethod" disabled="{{loading}}">用星屿账号</button>
+        </view>
+        <block wx:if="{{loginMethod === 'link'}}">
+          <view class="muted">向原来的 AI 发送 /设置，复制它发来的完整链接，粘贴到下方。</view>
+          <view class="field login-first"><label class="label" for="settings-link">应用的设置链接</label><textarea class="control connection-link" id="settings-link" value="{{settingsLink}}" bindinput="linkField" maxlength="2048" disabled="{{loading}}" placeholder="粘贴包含 #token 的完整链接" placeholder-class="placeholder"/></view>
+          <view class="notice">{{bindingPending ? '点击连接后，这个微信会记住对应的应用。请勿分享设置链接。' : '最初的管理员也可这样连接，无需重新注册或开通。请勿分享设置链接。'}}</view>
+        </block>
+        <block wx:else>
+          <view class="field login-first"><label class="label" for="username">邮箱或原账号</label><input class="control" id="username" data-key="username" value="{{username}}" bindinput="loginField" maxlength="254" disabled="{{loading}}" placeholder="填写星屿账号" placeholder-class="placeholder"/></view>
+          <view class="field"><label class="label" for="password">密码</label><input class="control" id="password" data-key="password" value="{{password}}" bindinput="loginField" password maxlength="128" disabled="{{loading}}" placeholder="填写原账号密码" placeholder-class="placeholder" confirm-type="done" bindconfirm="login"/></view>
+          <view wx:if="{{bindingPending}}" class="switch-row"><text>下次用此微信自动进入</text><switch checked="{{rememberWechat}}" bindchange="toggleRememberWechat" color="#246b57" disabled="{{loading}}" aria-label="下次用此微信自动进入"/></view>
+          <view class="notice">{{bindingPending && rememberWechat ? '开启后，会将此微信连接到账号已关联的应用。共享测试账号请关闭此选项。' : '仅用账号登录，不新增或替换微信绑定。退出后可重新选择连接方式。'}}</view>
+        </block>
+        </block>
+      </block>
+      <view wx:else class="notice entry-help">正在准备连接。现在可以先预览设置流程，示例资料仅保存在本机。</view>
+      <view wx:if="{{error}}" class="error" role="alert">{{error}}</view>
+      <view class="entry-actions">
+        <button wx:if="{{canConnect && (!wechatReady || bindingPending || manualConnection) && (!phoneReady || otherMethods || manualConnection) && loginMethod === 'link'}}" class="primary" bindtap="connectLink" loading="{{loading}}" disabled="{{loading}}">{{bindingPending ? '确认连接我的应用' : '连接并读取设置'}}</button>
+        <button wx:elif="{{canConnect && (!wechatReady || bindingPending || manualConnection) && (!phoneReady || otherMethods || manualConnection)}}" class="primary" bindtap="login" loading="{{loading}}" disabled="{{loading}}">{{bindingPending && rememberWechat ? '验证并连接我的应用' : '登录并读取设置'}}</button>
+        <button wx:elif="{{!canConnect}}" class="primary" bindtap="startDemo" loading="{{loading}}" disabled="{{loading}}">预览设置流程</button>
+      </view>
+    </view>
+    <button wx:if="{{canConnect && !reauthPending}}" class="text-button" bindtap="startDemo" disabled="{{loading}}">先看看示例</button>
+    <button class="text-button" bindtap="showHelp">怎么开始聊天？</button>
+  </view>
+  <block wx:else>
+    <view class="notice">{{mode === 'demo' ? '本地预览 · 不会修改微信中的应用或人格' : '当前应用：' + applicationName}}</view>
+    <block wx:if="{{view === 'home'}}">
+      <view class="title">我的空间</view>
+      <view class="subtitle">把 TA 调整成你喜欢的样子，慢慢来就好。</view>
+      <view class="surface">
+        <view class="section-title">先选一个聊得来的 TA</view>
+        <view class="muted">选人格 → 保存设置 → 回微信聊天</view>
+        <view class="state">{{mode === 'demo' ? '示例已保存：' : '当前已保存：'}}{{savedTitle}}</view>
+        <view wx:if="{{dirty}}" class="notice">你还有未保存的修改，返回编辑后可以继续保存。</view>
+        <button class="primary" bindtap="openPersona">{{dirty ? '继续修改人格' : '选择或修改人格'}}</button>
+        <button class="text-button" bindtap="showHelp">怎么开始聊天？</button>
+      </view>
+      <view wx:if="{{joinQr || joinNotice}}" class="surface join-section">
+        <view class="section-title">把 TA 添加到微信</view>
+        <view class="muted">长按识别二维码，按微信提示加入。设置保存后，回到微信里的 AI 聊天窗口发消息。</view>
+        <image wx:if="{{joinQr}}" class="join-qr" src="{{joinQr}}" mode="widthFix" show-menu-by-longpress="{{true}}" aria-label="添加应用到微信的二维码"/>
+        <view wx:if="{{joinNotice}}" class="notice">{{joinNotice}}</view>
+      </view>
+      <view wx:if="{{error}}" class="error">{{error}}</view>
+      <button wx:if="{{mode === 'account' && !joinQr}}" class="text-button" bindtap="loadJoinQr" disabled="{{loading}}">查看添加到微信的方式</button>
+      <button wx:if="{{needsLogin}}" class="secondary" bindtap="reLogin">重新登录，保留草稿</button>
+      <button class="text-button" bindtap="resetDemo" disabled="{{loading}}">{{mode === 'demo' ? '重新读取本地示例' : '读取最新设置'}}</button>
+      <button wx:if="{{mode === 'account' && wechatBound}}" class="text-button" bindtap="disconnectWeChat" disabled="{{loading}}">解除微信连接</button>
+      <button wx:if="{{mode === 'account'}}" class="text-button" bindtap="leaveAccount" disabled="{{loading}}">退出本次登录</button>
+      <button wx:else class="text-button" bindtap="leaveAccount">返回登录</button>
+    </block>
+    <block wx:else>
+      <button class="text-button back" bindtap="goHome" disabled="{{saving}}">返回我的空间</button>
+      <view class="title">选择聊天伙伴</view>
+      <view class="subtitle">{{mode === 'demo' ? '选好后点击“保存示例”。示例只保存在本机。' : '选好后点击“保存设置”，回微信就能继续聊天。'}}</view>
+      <view wx:if="{{savedNotice}}" class="saved">{{mode === 'demo' ? '示例已保存在本机，不会改变微信聊天人格。' : '人格设置已保存，可以回微信聊天了。'}}<view wx:if="{{savedMessage}}">{{savedMessage}}</view></view>
+      <view wx:if="{{templateNotice}}" class="saved">{{templateNotice}}</view>
+      <view wx:if="{{templateError}}" class="notice">{{templateError}}</view>
+      <view class="surface">
+        <view class="section-title">{{mode === 'demo' ? '试试人格模板' : '官方人格模板'}}</view>
+        <view wx:if="{{!templates.length}}" class="muted">{{templateError ? '暂时未能读取模板，可以继续修改已有的人格。' : '暂时没有已发布的模板，可以继续修改已有的人格。'}}</view>
+        <view wx:for="{{templates}}" wx:key="id" class="template-row">
+          <view class="template-title">{{item.title}}</view>
+          <view class="muted">{{item.description}}</view>
+          <view wx:if="{{item.hasVoice || item.hasReference}}" class="template-meta">{{item.hasVoice ? '包含语音设定' : ''}}{{item.hasVoice && item.hasReference ? ' · ' : ''}}{{item.hasReference ? '包含人物参考图' : ''}}</view>
+          <button class="secondary" data-id="{{item.id}}" bindtap="useTemplate" disabled="{{saving || loading}}">{{loading ? '正在读取…' : mode === 'demo' ? '使用这个示例' : '使用这个模板'}}</button>
+        </view>
+      </view>
+      <view class="surface">
+        <view class="label">这次想和谁聊天？</view>
+        <picker range="{{choices}}" range-key="title" value="{{selectedIndex}}" bindchange="selectPersona" disabled="{{saving}}">
+          <view class="control picker"><text class="picker-name">{{choices[selectedIndex].title}}</text><text class="expand-label">选择</text></view>
+        </picker>
+        <block wx:if="{{templatePending}}">
+          <view class="switch-row"><text>同时更新应用名称和头像</text><switch checked="{{syncApplication}}" bindchange="toggleSync" color="#246b57" disabled="{{saving}}" aria-label="同时更新应用名称和头像"/></view>
+          <view class="notice">{{mode === 'demo' ? '预览只记录你的选择，不会更新真实应用。' : '保存后提交更新，微信中显示可能稍有延迟；取消勾选可保留原名称和头像。'}}</view>
+        </block>
+      </view>
+      <view wx:for="{{groups}}" wx:key="id" wx:for-item="group" class="surface group">
+        <button class="group-button" data-id="{{group.id}}" bindtap="toggleGroup"><text>{{group.title}}</text><text class="expand-label">{{openGroup === group.id ? '收起' : '展开'}}</text></button>
+        <view wx:if="{{openGroup === group.id}}" class="group-content">
+          <view wx:for="{{group.fields}}" wx:key="key" wx:for-item="field" class="field">
+            <label class="label" for="{{field.key}}">{{field.label}}</label>
+            <textarea wx:if="{{field.multiline}}" class="control" id="{{field.key}}" data-key="{{field.key}}" value="{{field.value}}" maxlength="{{field.limit}}" bindinput="edit" disabled="{{saving}}" placeholder="填写{{field.label}}" placeholder-class="placeholder" adjust-position="{{true}}"/>
+            <input wx:else class="control" id="{{field.key}}" data-key="{{field.key}}" value="{{field.value}}" maxlength="{{field.limit}}" bindinput="edit" disabled="{{saving}}" placeholder="填写{{field.label}}" placeholder-class="placeholder"/>
+          </view>
+        </view>
+      </view>
+      <view class="bottom-note">选择模板会新建一个可修改的人格。所有修改都需要手动保存。</view>
+      <view wx:if="{{error}}" class="error" role="alert">{{error}}</view>
+      <button wx:if="{{needsLogin}}" class="secondary" bindtap="reLogin">重新登录，保留草稿</button>
+      <button wx:if="{{mode === 'account'}}" class="text-button" bindtap="resetDemo" disabled="{{saving || loading}}">读取最新设置</button>
+      <view class="savebar">
+        <text class="muted">{{saving ? '正在保存…' : dirty ? '有未保存的修改' : mode === 'demo' ? '示例已保存' : '设置已保存'}}</text>
+        <button class="primary" bindtap="save" loading="{{saving}}" disabled="{{saving || loading || !dirty || needsLogin}}">{{error ? '重试保存' : mode === 'demo' ? '保存示例' : '保存设置'}}</button>
+      </view>
+    </block>
+  </block>
+</view>

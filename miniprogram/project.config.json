@@ -1,0 +1,8 @@
+{
+  "appid": "wx0000000000000000",
+  "projectname": "xingyu-settings",
+  "compileType": "miniprogram",
+  "miniprogramRoot": "src/",
+  "setting": { "es6": true, "minified": true, "urlCheck": true },
+  "condition": {}
+}

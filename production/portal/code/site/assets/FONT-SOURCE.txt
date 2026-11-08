@@ -1,0 +1,4 @@
+Noto Sans SC, Google Fonts / Source Han Sans, SIL Open Font License 1.1.
+Text-subset font files retrieved from Google Fonts CSS API for this preview.
+https://github.com/notofonts/noto-cjk
+https://openfontlicense.org/

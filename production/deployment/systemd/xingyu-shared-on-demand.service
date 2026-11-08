@@ -1,0 +1,23 @@
+[Unit]
+Description=Xingyu shared runtime on-demand lifecycle
+Requires=docker.service
+After=docker.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 -B /home/ubuntu/wecom-kf/shared-runtime-on-demand/controller.py
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=45
+MemoryMax=64M
+TasksMax=48
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/run /home/ubuntu/wecom-kf/shared-runtime-fleet10 /home/ubuntu/wecom-kf/app-pool/operation.lock /home/ubuntu/wecom-kf/enterprises/ww0000000000000002/app-pool/operation.lock
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+[Unit]
+Description=Xingyu verified Alipay recharge
+After=docker.service network-online.target
+Requires=docker.service
+[Service]
+Type=simple
+RuntimeDirectory=xingyu-alipay
+RuntimeDirectoryMode=0700
+RuntimeDirectoryPreserve=yes
+ExecStartPre=-/usr/bin/docker rm -f xingyu-alipay
+ExecStart=/usr/bin/docker run --rm --name xingyu-alipay --user 0:0 --network host --read-only --tmpfs /tmp:rw,noexec,nosuid --security-opt no-new-privileges --log-opt max-size=5m --log-opt max-file=2 --mount type=bind,src=/home/ubuntu/wecom-kf,dst=/home/ubuntu/wecom-kf,readonly --mount type=bind,src=/home/ubuntu/wecom-kf/admin/data,dst=/home/ubuntu/wecom-kf/admin/data --mount type=bind,src=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002/admin/data,dst=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002/admin/data --mount type=bind,src=/home/ubuntu/wecom-kf/app-pool/operation.lock,dst=/home/ubuntu/wecom-kf/app-pool/operation.lock --mount type=bind,src=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002/app-pool/operation.lock,dst=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002/app-pool/operation.lock --mount type=bind,src=/home/ubuntu/wecom-kf/admin/private/alipay,dst=/run/secrets/alipay,readonly --mount type=bind,src=/run/xingyu-alipay,dst=/run/xingyu-alipay --env PYTHONDONTWRITEBYTECODE=1 --entrypoint python wecom-deepseek-assistant:voice-quality-20261028-123913 -B /home/ubuntu/wecom-kf/admin/code/alipay_service.py --root /home/ubuntu/wecom-kf --config /run/secrets/alipay/merchant.json
+ExecStop=/usr/bin/docker stop -t 20 xingyu-alipay
+Restart=on-failure
+RestartSec=5
+UMask=0077
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,24 @@
+[Unit]
+Description=Xiaoyi authenticated administration operations
+After=docker.service xiaoyi-portal-bridge.service
+Requires=docker.service xiaoyi-portal-bridge.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/admin/code/console_host.py
+Restart=on-failure
+RestartSec=3
+UMask=0077
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/ubuntu/wecom-kf /run/xiaoyi-portal /var/lib/docker/volumes/wecom-kf_kf-data/_data
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=CAP_CHOWN CAP_DAC_OVERRIDE CAP_FOWNER
+MemoryMax=256M
+TasksMax=64
+
+[Install]
+WantedBy=multi-user.target

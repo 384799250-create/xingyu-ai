@@ -1,0 +1,11 @@
+[Unit]
+Description=Check Xiaoyi idle policy every minute
+
+[Timer]
+OnBootSec=60s
+OnUnitActiveSec=60s
+AccuracySec=10s
+Unit=xiaoyi-lifecycle.service
+
+[Install]
+WantedBy=timers.target

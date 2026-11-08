@@ -1,0 +1,12 @@
+[Unit]
+Description=Xiaoyi idle access and safe application recycling
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/home/ubuntu/wecom-kf/enterprises/ww0000000000000002
+UMask=0077
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/enterprises/ww0000000000000002/admin/code/lifecycle_worker.py --root /home/ubuntu/wecom-kf/enterprises/ww0000000000000002
+TimeoutStartSec=600

@@ -1,0 +1,10 @@
+[Unit]
+Description=Recover interrupted Xiaoshengyi application assignments
+After=docker.service
+
+[Service]
+Type=oneshot
+User=root
+UMask=0077
+ExecStart=/usr/bin/python3 /home/ubuntu/wecom-kf/app-pool/app_pool.py recover
+TimeoutStartSec=90

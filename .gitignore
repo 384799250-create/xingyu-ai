@@ -1,0 +1,33 @@
+# Local and production secrets
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.dpapi
+*credential*.json
+*secret*.json
+*token*.json
+project.private.config.json
+# Runtime and personal data
+*.sqlite*
+*.db
+*.log
+data/
+private/
+voice-preview-cache/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.DS_Store
+.idea/
+.vscode/
+work/
+output/
+*.zip
+*.tar*
